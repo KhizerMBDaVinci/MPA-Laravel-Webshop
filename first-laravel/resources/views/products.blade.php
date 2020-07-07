@@ -8,7 +8,8 @@
 <div class="container">
 
     <h2>De Bruyne & Adriaansen Markt</h2>
-        <p>Dit is de online webshop waar vandaan je alle lekkere eten kunt bestellen</p>
+
+        <p>{{ $category[0]->Beschrijving}}</p>
         
     @foreach($products as $product)
     <div class="product-container">

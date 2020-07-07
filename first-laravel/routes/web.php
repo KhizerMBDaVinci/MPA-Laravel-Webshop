@@ -13,4 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'categorieController@Show');
+Route::get('/', 'HomeController@HomeData');
+
+Route::get("/Pizza's", 'pizzaController@PizzaData');
+
+Route::get("/Toetjes", 'toetjeController@ToetjeData');
+
+Route::get("/Burgers", 'burgerController@BurgerData');
+
+Route::get("/Salade", 'saladeController@SaladeData');
+
+Route::get("/Drinken", 'drinkenController@DrinkenData');

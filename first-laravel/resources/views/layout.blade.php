@@ -12,11 +12,12 @@
     </head>
     <body>
     <div id="page-container">
-    @yield('output')
+    @yield('navbar')
+    @yield('products')
     </div>
 
     <footer>
-        DeBruyne & Adriaansen Markt 2020 ©
+        Firma De Bruyne & Adriaansen Markt 2020 ©
     </footer>
 
     </body> 

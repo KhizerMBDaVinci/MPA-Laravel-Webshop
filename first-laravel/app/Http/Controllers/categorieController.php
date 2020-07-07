@@ -7,15 +7,10 @@ use App\categorieModel;
 
 class categorieController extends Controller
 {
-    public function Show() 
+    public function ShowAll() 
     {
        $categories = categorieModel::all();
-        return view('home', ['categories' => $categories]);
-    }
-
-    public function  GetAll()
-    {
-
+        return ['categories' => $categories];
     }
     
 }

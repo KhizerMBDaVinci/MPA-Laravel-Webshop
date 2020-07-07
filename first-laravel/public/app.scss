@@ -3,6 +3,12 @@ body{
     margin: 0;
 }
 
+.container
+{
+    width: 75%;
+    margin: 0 auto;
+}
+
 footer
 {
     font-family: Arial, Helvetica, sans-serif;
@@ -14,6 +20,10 @@ footer
 #navigation-menu
 {
     background-color: lightgrey;
+    position: fixed;
+    top: 15px;
+    margin: 0 12.5%;
+    width: 50%;
 }
 
 #navigation-menu button
@@ -22,12 +32,66 @@ footer
     width: 10%;
     padding: 2%;
     outline: none;
-    margin: 0 auto;
+    margin: auto;
+}
+
+#navigation-menu button:hover
+{
+    background-color: green;
+    color: white;
+    cursor: pointer;
 }
 
 
 #navigation-menu ul
 {
+    width: 100%;
     margin: 0;
-    padding: 0;
+    padding: .5%;
+}
+
+.container
+{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 100px;
+}
+
+.container h2
+{
+    font-size: 3vh;
+}
+
+.product-container
+{
+    text-align: center;
+    display: inline-flex;
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+}
+
+.product-container p
+{
+    width: 175px;
+    height: 20px;
+    margin: 175px 12.5px 0 12.5px;
+    position: absolute;
+    text-align: center;
+    
+}
+
+.product-container img
+{
+    margin: 0 13%;
+    width: 150px;
+    height: 150px;
+}
+
+.product-container:hover
+{
+    background-color: orange;
+    cursor: pointer;
 }
