@@ -1,7 +1,4 @@
 @extends('layout')
-@section('navbar')
-    @include('navigation-menu')
-@endsection
 
 @section('products')
 
@@ -12,10 +9,12 @@
         <p>{{ $category[0]->Beschrijving}}</p>
         
     @foreach($products as $product)
-    <div class="product-container">
-        <img src=" img/{{ $product->ID }}.jpg"></img>
-        <p>{{ $product->Naam }}</p>
-    </div>
+    <a href="/details?id={{ $product->ID }}">
+        <div class="product-container">
+            <img src=" img/{{ $product->ID }}.jpg"></img>
+            <p>{{ $product->Naam }}</p>
+        </div>
+    </a>
     @endforeach
 
 </div>

@@ -12,8 +12,9 @@
     </head>
     <body>
     <div id="page-container">
-    @yield('navbar')
+    @include('navigation-menu')
     @yield('products')
+    @yield('details')
     </div>
 
     <footer>
