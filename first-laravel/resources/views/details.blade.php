@@ -13,9 +13,8 @@
     
 
     <p id="shopping-cart-text">Toevoegen aan winkelwagen</p>
-    <a id="shopping-cart"><img src="img/shopping-cart.jpg"></a>
-    <p id="amountext">Aantal</p>
-    <input type="number" id="amount" step="1" min="1">
+    <a id="shopping-cart" href="{{ route('shoppingcart.add', $product[0]->ID) }}"><img src="img/shopping-cart.jpg"></a>
+
 </div>
 
 @endsection

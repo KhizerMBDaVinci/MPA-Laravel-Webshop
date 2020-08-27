@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@HomeData');
+Route::get('/', 'HomeController@HomeData')->name('home');
 
 Route::get("/category", 'productByCatController@ProductSData');
 
 Route::get("/details", 'detailsController@ProductData');
+
+Route::get("/shopping-cart", 'shoppingCartController@ShowCart');
+
+Route::get("/add-to-cart/{id}", 'shoppingCartController@Add')->name('shoppingcart.add');

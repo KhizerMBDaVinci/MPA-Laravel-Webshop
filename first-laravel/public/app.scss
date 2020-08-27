@@ -52,6 +52,22 @@ footer
     cursor: pointer;
 }
 
+#shopping-cart-btn
+{
+    background-color: blue;
+    width: 3%;
+    padding: 1%;
+    position: fixed;
+    right: 5%;
+    top: 2%;
+    border-radius: 10px;
+}
+
+#shopping-cart-btn:hover
+{
+    cursor: pointer;
+    background-color: cyan;
+}
 
 #navigation-menu ul
 {

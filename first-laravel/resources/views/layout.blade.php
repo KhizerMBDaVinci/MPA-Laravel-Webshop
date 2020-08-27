@@ -15,6 +15,7 @@
     @include('navigation-menu')
     @yield('products')
     @yield('details')
+    @yield('shopping-cart')
     </div>
 
     <footer>
