@@ -6,7 +6,7 @@ use Session;
 class ShoppingCart
 {
     
-    public $products;
+    public $products = null;
     public $quantity = 0;
     public $price = 0;
 
@@ -23,8 +23,17 @@ class ShoppingCart
 
     public function Add($product, $id)
     {
-        array_push($this->products, $product[0]);
-    
+
+        $storedProduct = ['ID' => $id, 'Name' => $product[0]->Naam, 'Quantity' => 0, 'Price' => 0];
+
+        if($this->products)
+        {
+            if(array_key_exists($id, $this->products))
+            {
+                $storedProduct = $this->products[$id];
+            }
+        }
+        $this->products[$id] = $storedProduct;
 
     }
 

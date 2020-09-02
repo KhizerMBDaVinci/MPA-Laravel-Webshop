@@ -19,7 +19,7 @@ class shoppingCartController extends Controller
         $categories = categorieModel::all();
         $oldcart = Session::get('cart');
         $cart = new ShoppingCart($oldcart);
-        $products = [$cart->products, $cart->quantity, $cart->price];
+        $products = [$cart->products];
 
         return view('shopping-cart', ['categories' => $categories, 'products' => $products]);
     }
