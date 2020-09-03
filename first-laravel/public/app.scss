@@ -204,3 +204,47 @@ footer
     grid-area: 3/3;
     margin: auto;
 }
+
+.cart-prod-container
+{
+    background-color: yellow;
+    padding: 20px;
+    margin: 10vh 15% 0 5%;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    height: 10vh;
+}
+
+.cart-prod-container img
+{
+    width: 10vh;
+    margin: auto;
+    grid-area: 1/1;
+}
+
+.cart-prod-name
+{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-size: 3vh;
+    grid-area: 1/2;
+}
+
+.cart-prod-qty
+{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-size: 3vh;
+    grid-area: 1/3;
+}
+
+.cart-prod-price
+{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-size: 3vh;
+    grid-area: 1/5;
+}

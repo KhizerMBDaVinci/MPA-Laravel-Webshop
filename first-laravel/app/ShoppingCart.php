@@ -24,7 +24,7 @@ class ShoppingCart
     public function Add($product, $id)
     {
 
-        $storedProduct = ['ID' => $id, 'Name' => $product[0]->Naam, 'Quantity' => 0, 'Price' => 0];
+        $storedProduct = ['ID' => $product[0]->ID, 'Name' => $product[0]->Naam, 'Quantity' => 0, 'Price' => 0];
 
         if($this->products)
         {
@@ -33,8 +33,13 @@ class ShoppingCart
                 $storedProduct = $this->products[$id];
             }
         }
-        $this->products[$id] = $storedProduct;
 
+        $storedProduct['Quantity']++;
+        $storedProduct['Price'] = $product[0]->Prijs * $storedProduct['Quantity'];
+
+        $this->products[$id] = $storedProduct;
+        $this->quantity++;
+        $this->price += $product[0]->Prijs;
     }
 
     public function Remove($product)

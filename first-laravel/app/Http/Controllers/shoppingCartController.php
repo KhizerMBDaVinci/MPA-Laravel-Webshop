@@ -16,12 +16,16 @@ class shoppingCartController extends Controller
 
     public function showCart()
     {
+
         $categories = categorieModel::all();
+        if (!Session::has('cart'))
+        {
+            return view('shopping-cart', ['categories' => $categories, 'products' => null]);
+        }
         $oldcart = Session::get('cart');
         $cart = new ShoppingCart($oldcart);
-        $products = [$cart->products];
 
-        return view('shopping-cart', ['categories' => $categories, 'products' => $products]);
+        return view('shopping-cart', ['categories' => $categories, 'products' => $cart->products, 'totalPrice' => $cart->price]);
     }
 
     public function Add(Request $request, $id)
