@@ -16,7 +16,7 @@ class shoppingCartController extends Controller
 
     public function showCart()
     {
-
+        //Session::flush();
         $categories = categorieModel::all();
         if (!Session::has('cart'))
         {

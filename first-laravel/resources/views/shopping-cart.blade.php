@@ -12,6 +12,7 @@
                 <p class="cart-prod-name">{{ $product['Name'] }}</p>
                 <p class="cart-prod-qty">{{ $product['Quantity'] }}</p>
                 <p class="cart-prod-price">€{{ $product['Price'] }}</p>
+                <p class="cart-prod-price2">€{{ $product['Price'] / $product['Quantity'] }} per stuk</p>
             </div>
             <br>
 

@@ -175,6 +175,7 @@ footer
     transition: .3s;
     border: none;
     font-size: 300%;
+    background-color: yellow;
 }
 
 #shopping-cart img
@@ -247,6 +248,16 @@ footer
     margin: auto;
     font-size: 3vh;
     grid-area: 1/5;
+}
+
+.cart-prod-price2
+{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-size: 2vh;
+    grid-area: 1/5;
+    margin: 7vh 0 0 0;
 }
 
 #cart-container-container
