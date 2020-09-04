@@ -25,17 +25,19 @@ class shoppingCartController extends Controller
         $oldcart = Session::get('cart');
         $cart = new ShoppingCart($oldcart);
 
-        return view('shopping-cart', ['categories' => $categories, 'products' => $cart->products, 'totalPrice' => $cart->price]);
+        return view('shopping-cart', ['categories' => $categories, 'products' => $cart->products, 'totalPrice' => $cart->price, 'totalQuantity' => $cart->quantity]);
     }
 
     public function Add(Request $request, $id)
     {
 
+        $qty = request('amount');
+
         $product = productModel::where('ID', $id)->get();
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
 
         $cart = new ShoppingCart($oldCart);
-        $cart->Add($product, $id);
+        $cart->Add($product, $id, $qty);
         
         $request->session()->put('cart', $cart); 
         return redirect()->route('home');

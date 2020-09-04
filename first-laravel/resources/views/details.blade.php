@@ -1,20 +1,24 @@
 @extends('layout')
 
 @section('details')
-
-<div id="detail-container">
-
-    <h2 id="prod-naam">{{ $product[0]->Naam }}</h2>
-
-    <p id="prod-beschrijving">{{ $product[0]->Beschrijving }}</p>
-    <p id="prod-prijs">€{{ $product[0]->Prijs }}</p>
-        
-    <img id="prod-afbeelding" src="img/{{ $product[0]->ID }}.jpg">
+<form id="amount" method="get" action="{{ route('shoppingcart.add', $product[0]->ID) }}">
+    <div id="detail-container">
     
+        <h2 id="prod-naam">{{ $product[0]->Naam }}</h2>
 
-    <p id="shopping-cart-text">Toevoegen aan winkelwagen</p>
-    <a id="shopping-cart" href="{{ route('shoppingcart.add', $product[0]->ID) }}"><img src="img/shopping-cart.jpg"></a>
+        <p id="prod-beschrijving">{{ $product[0]->Beschrijving }}</p>
+        <p id="prod-prijs">€{{ $product[0]->Prijs }}</p>
+            
+        <img id="prod-afbeelding" src="img/{{ $product[0]->ID }}.jpg">
+        
 
-</div>
+        <p id="shopping-cart-text">Toevoegen aan winkelwagen</p>
+        <input value="+" type="submit" id="shopping-cart">
 
+        <p id="amountext">Aantal</p>
+
+        <input id="amount" value="1" name="amount" type="number" min="1">
+    
+    </div>
+</form>
 @endsection
