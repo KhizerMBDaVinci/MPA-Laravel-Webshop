@@ -13,6 +13,15 @@
                 <p class="cart-prod-qty">{{ $product['Quantity'] }}</p>
                 <p class="cart-prod-price">€{{ $product['Price'] }}</p>
                 <p class="cart-prod-price2">€{{ $product['Price'] / $product['Quantity'] }} per stuk</p>
+
+                <form id="min-qty" method="get" action="{{ route('shoppingcart.remove', $product['ID']) }}">
+                    <input id="min" type="submit" name="amount" value="-"></input>
+                </form>
+
+                <form id="add-qty" method="get" action="{{ route('shoppingcart.add', $product['ID']) }}">
+                    <input id="add" type="submit" name="amount" value="+"></input>
+                </form>
+
             </div>
             <br>
 

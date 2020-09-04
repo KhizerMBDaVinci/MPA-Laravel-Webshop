@@ -32,6 +32,10 @@ class shoppingCartController extends Controller
     {
 
         $qty = request('amount');
+        if($qty == "+")
+        {
+            $qty = 1;
+        }
 
         $product = productModel::where('ID', $id)->get();
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
@@ -40,11 +44,25 @@ class shoppingCartController extends Controller
         $cart->Add($product, $id, $qty);
         
         $request->session()->put('cart', $cart); 
-        return redirect()->route('home');
+        return redirect()->route('shopping-cart');
     }
 
-    public function Remove()
+    public function Remove(Request $request, $id)
     {
+        $qty = request('amount');
+        if($qty == "-")
+        {
+            $qty = 1;
+        }
+
+        $product = productModel::where('ID', $id)->get();
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+
+        $cart = new ShoppingCart($oldCart);
+        $cart->Remove($product, $id, $qty);
         
+        $request->session()->put('cart', $cart); 
+        return redirect()->route('shopping-cart');
+
     }
 }

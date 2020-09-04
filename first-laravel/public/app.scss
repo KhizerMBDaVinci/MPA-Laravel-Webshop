@@ -309,3 +309,40 @@ footer
     font-size: 3vh;
     grid-area: 1/5;
 }
+
+
+#min-qty
+{
+    margin: 3vh 0;
+    width: 20%;
+    grid-area: 1/4;
+}
+
+#add-qty
+{
+    margin: 3vh 30%;
+    width: 20%;
+    grid-area: 1/4;
+}
+
+#min, #add
+{
+    border: none;
+    border-radius: 40%;
+    font-size: 3vh;
+    background-color: blue;
+    width: 30px;
+    outline: none;
+}
+
+#min:hover
+{
+    background-color: red;
+    cursor: pointer;
+}
+
+#add:hover
+{
+    background-color: lime;
+    cursor: pointer;
+}

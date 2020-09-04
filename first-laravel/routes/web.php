@@ -19,6 +19,8 @@ Route::get("/category", 'productByCatController@ProductSData');
 
 Route::get("/details", 'detailsController@ProductData');
 
-Route::get("/shopping-cart", 'shoppingCartController@ShowCart');
+Route::get("/shopping-cart", 'shoppingCartController@ShowCart')->name('shopping-cart');;
 
 Route::get("/add-to-cart/{id}", 'shoppingCartController@Add')->name('shoppingcart.add');
+
+Route::get("/remove-from-cart/{id}", 'shoppingCartController@Remove')->name('shoppingcart.remove');

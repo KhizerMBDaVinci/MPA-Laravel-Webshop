@@ -42,9 +42,13 @@ class ShoppingCart
         $this->price += $product[0]->Prijs * $qty;
     }
 
-    public function Remove($product)
+    public function Remove($product, $id, $qty)
     {
+        $this->products[$id]['Quantity'] -= $qty;
+        $this->products[$id]['Price'] -= $product[0]->Prijs;
 
+        $this->quantity -= $qty;
+        $this->price -= $product[0]->Prijs * $qty;
     }
 
     public function GiveProducts()
