@@ -62,6 +62,7 @@ class shoppingCartController extends Controller
         $cart->Remove($product, $id, $qty);
         
         $request->session()->put('cart', $cart); 
+        
         return redirect()->route('shopping-cart');
 
     }
