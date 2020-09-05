@@ -346,3 +346,27 @@ footer
     background-color: lime;
     cursor: pointer;
 }
+
+#remove-prod
+{
+    grid-area: 1/4;
+    margin: 2vh 10% 2vh 60%;
+
+}
+
+#remove-prod input
+{
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 4vh;
+    border-radius: 10%;
+    background-color: maroon;
+    outline: none;
+}
+#remove-prod input:hover
+{
+    cursor: pointer;
+    color: white;
+    background-color: black;
+}

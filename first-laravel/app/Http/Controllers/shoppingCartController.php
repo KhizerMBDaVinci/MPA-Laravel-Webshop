@@ -55,6 +55,11 @@ class shoppingCartController extends Controller
             $qty = 1;
         }
 
+        if($qty == "X")
+        {
+            $qty = 0;
+        }
+
         $product = productModel::where('ID', $id)->get();
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
 

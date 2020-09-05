@@ -44,21 +44,32 @@ class ShoppingCart
 
     public function Remove($product, $id, $qty)
     {
-        if($this->products[$id]['Quantity'] > 1)
+        if($qty == 1)
         {
-            $this->products[$id]['Quantity'] -= $qty;
-            $this->products[$id]['Price'] -= $product[0]->Prijs;
-    
-            $this->quantity -= $qty;
-            $this->price -= $product[0]->Prijs * $qty;
+            if($this->products[$id]['Quantity'] > 1)
+            {
+                $this->products[$id]['Quantity'] -= $qty;
+                $this->products[$id]['Price'] -= $product[0]->Prijs;
+        
+                $this->quantity -= $qty;
+                $this->price -= $product[0]->Prijs * $qty;
+            }
+
+            else
+            {
+                $this->quantity -= $qty;
+                $this->price -= $product[0]->Prijs * $qty;
+                unset($this->products[$id]);
+            }
         }
 
-        else
+        if($qty == 0)
         {
-            $this->quantity -= $qty;
-            $this->price -= $product[0]->Prijs * $qty;
+            $this->quantity = $qty;
+            $this->price = $product[0]->Prijs * $qty;
             unset($this->products[$id]);
         }
+        
     }
 
     public function GiveProducts()

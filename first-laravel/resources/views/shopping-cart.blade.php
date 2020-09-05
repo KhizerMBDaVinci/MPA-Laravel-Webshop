@@ -23,6 +23,10 @@
                     <input id="add" type="submit" name="amount" value="+"></input>
                 </form>
 
+                <form id="remove-prod" method="get" action="{{ route('shoppingcart.remove', $product['ID']) }}">
+                    <input id="remove" type="submit" name="amount" value="X"></input>
+                </form>
+
             </div>
             <br>
             @endforeach
