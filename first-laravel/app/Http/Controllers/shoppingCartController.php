@@ -71,4 +71,6 @@ class shoppingCartController extends Controller
         return redirect()->route('shopping-cart');
 
     }
+
+    
 }
