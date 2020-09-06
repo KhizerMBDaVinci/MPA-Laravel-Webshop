@@ -58,7 +58,7 @@ class ShoppingCart
             else
             {
                 $this->quantity -= $qty;
-                $this->price -= $product[0]->Prijs * $qty;
+                $this->price -= $this->products[$id]['Price'];
                 unset($this->products[$id]);
             }
         }
@@ -66,7 +66,7 @@ class ShoppingCart
         if($qty == 0)
         {
             $this->quantity = $qty;
-            $this->price = $product[0]->Prijs * $qty;
+            $this->price -= $product[0]->Prijs * $this->products[$id]['Quantity'];
             unset($this->products[$id]);
         }
         

@@ -34,6 +34,7 @@
             <div id="cart-total-container">
                 <p id="cart-ttl-name">Totaalbedrag:</p>
                 <p id="cart-ttl-price">€{{ $totalPrice }}</p>
+                <a><p id="order-link">Bestellen</p></a>
                 <p id="cart-amount-name">Aantal producten:</p>
                 <p id="cart-amount-qty">{{ $totalQuantity }}</p>
             </div>
