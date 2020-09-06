@@ -5,7 +5,7 @@
 @php $cart = Session::get('cart'); @endphp
 @if(Session::has('cart'))
     <div id="cart-container-container">
-        @if($cart->quantity > 0)
+        @if($cart->GiveQuantity() > 0)
                 @foreach($products as $product)
 
                 <div class="cart-prod-container">
@@ -43,7 +43,7 @@
         @endif
     </div>
 
-        @if($cart->quantity < 1)
+        @if($cart->GiveQuantity() < 1)
             <h2>Uw Shopping Cart is leeg.</h2>
                 <div id="cart-total-container">
                     <p id="cart-ttl-name">Totaalbedrag:</p>
@@ -54,6 +54,7 @@
         @endif
     
     @else
+    
     <h2>Uw Shopping Cart is leeg.</h2>
                 <div id="cart-total-container">
                     <p id="cart-ttl-name">Totaalbedrag:</p>

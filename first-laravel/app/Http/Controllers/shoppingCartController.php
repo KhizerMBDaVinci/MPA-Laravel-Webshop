@@ -25,7 +25,7 @@ class shoppingCartController extends Controller
         $oldcart = Session::get('cart');
         $cart = new ShoppingCart($oldcart);
 
-        return view('shopping-cart', ['categories' => $categories, 'products' => $cart->products, 'totalPrice' => $cart->price, 'totalQuantity' => $cart->quantity]);
+        return view('shopping-cart', ['categories' => $categories, 'products' => $cart->GiveProducts(), 'totalPrice' => $cart->GivePrice(), 'totalQuantity' => $cart->GiveQuantity()]);
     }
 
     public function Add(Request $request, $id)

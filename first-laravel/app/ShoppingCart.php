@@ -6,9 +6,9 @@ use Session;
 class ShoppingCart
 {
     
-    public $products = null;
-    public $quantity = 0;
-    public $price = 0;
+    private $products = null;
+    private $quantity = 0;
+    private $price = 0;
 
 
     public function __construct($oldCart)
@@ -75,6 +75,16 @@ class ShoppingCart
     public function GiveProducts()
     {
         return $this->products;
+    }
+
+    public function GivePrice()
+    {
+        return $this->price;
+    }
+
+    public function GiveQuantity()
+    {
+        return $this->quantity;
     }
 
 }
