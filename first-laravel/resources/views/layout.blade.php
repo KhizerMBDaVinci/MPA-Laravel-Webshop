@@ -16,6 +16,7 @@
     @yield('products')
     @yield('details')
     @yield('shopping-cart')
+    @yield('customer-form')
     </div>
 
     <footer>

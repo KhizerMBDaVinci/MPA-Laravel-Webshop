@@ -26,8 +26,6 @@ footer
     margin: 0 23.5%;
     width: 50%;
     opacity: .3;
-    transition: .3s;
-    
 }
 
 #navigation-menu button
@@ -42,7 +40,6 @@ footer
 #navigation-menu:hover
 {
     opacity: 1;
-    transition: .3s;
 }
 
 #navigation-menu button:hover
@@ -176,6 +173,7 @@ footer
     border: none;
     font-size: 300%;
     background-color: yellow;
+    outline: none;
 }
 
 #shopping-cart img
@@ -380,8 +378,12 @@ footer
     padding: 4vh 5px;
     border-radius: 20px;
     width: 70%;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
+    color: black;
+    border: none;
+    outline: none;
+    
 }
 
 #order-link:hover
@@ -389,4 +391,77 @@ footer
     cursor: pointer;
     background-color: green;
     color: white;
+}
+
+#customer-details-div
+{
+    display: grid;
+    grid-template-rows: repeat(10, 10%);
+    background-color: yellow;
+    width: 50%;
+    height: 80vh;
+    margin: 10vh auto 2vh auto;
+    padding: 10px;
+}
+
+#customer-details-div p
+{
+    grid-area: 1/1;
+    font-size: 3vh;
+    margin: 0 auto;
+}
+
+#customer-details-div input
+{
+    float: right;
+    margin: 7%;
+}
+
+#customer-details-div label
+{
+    float: left;
+    margin: 7%;
+}
+
+#finish-order
+{
+    border: none;
+    font-size: 3vh;
+    padding: 15px;
+    background-color: blue;
+    border-radius: 10px;
+    margin: 3vh 22% !important;
+    outline: none;
+}
+
+#finish-order:hover
+{
+    background-color: rgb(255, 0, 242);
+    cursor: pointer;
+}
+
+#backbtn button
+{
+    text-decoration: none;
+    color: black;
+    font-size: 3vh;
+    background-color: blue;
+    border: none;
+    margin: 5% 0 0 5%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#backbtn button:hover
+{
+    background-color: brown;
+    color: white;
+    cursor: pointer;
+}
+
+#errmsg
+{
+    font-size: 2vh !important;
+    color: red;
+    margin-top: 4vh !important;
 }

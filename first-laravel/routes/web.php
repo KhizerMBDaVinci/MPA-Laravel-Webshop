@@ -24,3 +24,7 @@ Route::get("/shopping-cart", 'shoppingCartController@ShowCart')->name('shopping-
 Route::get("/add-to-cart/{id}", 'shoppingCartController@Add')->name('shoppingcart.add');
 
 Route::get("/remove-from-cart/{id}", 'shoppingCartController@Remove')->name('shoppingcart.remove');
+
+Route::get("/customer-details", 'OrderController@CustomerForm');
+
+Route::post("/processing-order", 'OrderController@ValidateOrder');
