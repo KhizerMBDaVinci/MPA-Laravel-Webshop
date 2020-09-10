@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="{{ asset('img/shopping-cart.jpg') }}">
         <link type="text/css" href="{{ asset('app.scss') }}" rel="stylesheet">
         <title>Firma DeBruyne & Adriaansen Markt</title>
 
@@ -17,6 +18,7 @@
     @yield('details')
     @yield('shopping-cart')
     @yield('customer-form')
+    @yield('complete-order')
     </div>
 
     <footer>

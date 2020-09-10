@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\categorieModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,14 @@ Route::get("/add-to-cart/{id}", 'shoppingCartController@Add')->name('shoppingcar
 
 Route::get("/remove-from-cart/{id}", 'shoppingCartController@Remove')->name('shoppingcart.remove');
 
-Route::get("/customer-details", 'OrderController@CustomerForm');
+Route::get("/customer-details", 'OrderController@CustomerForm')->name('ordercontroller.customerform');
 
-Route::post("/processing-order", 'OrderController@ValidateOrder');
+Route::post("/processing-order", 'OrderController@ValidateOrder')->name('processingorder.validate');
+
+Route::get("/complete-order", function() 
+{
+
+    $categories = categorieModel::all();
+    return view('CompleteOrder', ['categories' => $categories]);
+    
+})->name('complete-order');

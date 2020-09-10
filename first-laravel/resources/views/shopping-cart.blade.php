@@ -3,11 +3,12 @@
 @section('shopping-cart')
 
 @php $cart = Session::get('cart'); @endphp
+
 @if(Session::has('cart'))
+
     <div id="cart-container-container">
         @if($cart->GiveQuantity() > 0)
                 @foreach($products as $product)
-
                 <div class="cart-prod-container">
 
                     <img src="img/{{ $product['ID'] }}.jpg">
@@ -36,7 +37,7 @@
                 <div id="cart-total-container">
                     <p id="cart-ttl-name">Totaalbedrag:</p>
                     <p id="cart-ttl-price">€{{ $totalPrice }}</p>
-                    <a href="/customer-details"><button id="order-link">Bestellen</button></a>
+                    <a href="{{ route('ordercontroller.customerform') }}"><button id="order-link">Bestellen</button></a>
                     <p id="cart-amount-name">Aantal producten:</p>
                     <p id="cart-amount-qty">{{ $totalQuantity }}</p>
                 </div>
@@ -44,6 +45,7 @@
     </div>
 
         @if($cart->GiveQuantity() < 1)
+        
             <h2>Uw Shopping Cart is leeg.</h2>
                 <div id="cart-total-container">
                     <p id="cart-ttl-name">Totaalbedrag:</p>

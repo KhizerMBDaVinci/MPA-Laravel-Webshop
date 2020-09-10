@@ -1,9 +1,11 @@
 @extends('layout')
 
+@php $cart = Session::get('cart'); $test = 'test' @endphp
+
 @section('customer-form')
 
 <a id="backbtn" href="/shopping-cart"><button>Terug</button></a>
-<form method="post" action="/processing-order">
+<form method="post" action="{{ route('processingorder.validate') }}">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div id="customer-details-div">
         <p id="errmsg">{{ $Message ?? '' }}</p>
