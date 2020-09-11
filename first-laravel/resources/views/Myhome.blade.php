@@ -5,8 +5,7 @@
 <div class="container">
 
     <h2>De Bruyne & Adriaansen Markt</h2>
-
-        <p>{{ $category[0]->Beschrijving}}</p>
+        <p>Dit is de online webshop waar je alle lekkere eten en drinken kunt bestellen</p>
         
     @foreach($products as $product)
     <a href="{{ route('details') }}?id={{ $product->ID }}">
@@ -20,4 +19,3 @@
 </div>
 
 @endsection
-

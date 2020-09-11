@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\categorieModel;
 use App\klantenModel;
 use App\ordersModel;
@@ -12,13 +13,25 @@ use Session;
 class OrderController extends Controller
 {
 
-    private $loggedIn = false;
-
     public function CustomerForm()
     {
-        $categories = categorieModel::all();
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            $categories = categorieModel::all();
+            $name = $user->name;
+            $email = $user->email;
 
-        return view('customer_details', ['categories' => $categories]);
+            return view('customer_details', ['categories' => $categories, 'name' => $name, 'email' => $email]);
+        }
+        
+        if(!Auth::check())
+        {
+            $categories = categorieModel::all();
+
+            return view('customer_details', ['categories' => $categories]);
+        }
+
     }
 
     public function ValidateOrder()
@@ -44,13 +57,20 @@ class OrderController extends Controller
         else
         {
            $this->StoreOrder();
-           Session::flush();
+
+           $cart = Session::get('cart');
+           $cart->SetProducts(null);
+           $cart->SetPrice(0);
+           $cart->SetQuantity(0);
+
            return redirect()->route('complete-order');
         }
     }
 
     public function StoreOrder()
     {
+        $user = Auth::user();
+
         $cart = Session::get('cart');
         
         $klant = new klantenModel();
@@ -73,11 +93,19 @@ class OrderController extends Controller
         $klant->Telefoonnummer = $Phone;
         $klant->save();
 
-        if($this->loggedIn == false)
+        if(Auth::check() == false)
         {
             $order->Klant_ID = $klant->getKey();
             $order->Totaal_Bedrag = $cart->GivePrice();
             $order->username = ' ';
+            $order->save();  
+        }
+
+        if(Auth::check() == true)
+        {
+            $order->Klant_ID = $klant->getKey();
+            $order->Totaal_Bedrag = $cart->GivePrice();
+            $order->username = $user->name;
             $order->save();  
         }
 

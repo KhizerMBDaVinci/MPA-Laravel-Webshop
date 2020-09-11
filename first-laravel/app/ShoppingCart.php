@@ -87,4 +87,19 @@ class ShoppingCart
         return $this->quantity;
     }
 
+    public function SetProducts($newProducts)
+    {
+        $this->products = $newProducts;
+    }
+
+    public function SetPrice($newPrice)
+    {
+        $this->price = $newPrice;
+    }
+
+    public function SetQuantity($newQty)
+    {
+        $this->quantity = $newQty;
+    }
+
 }

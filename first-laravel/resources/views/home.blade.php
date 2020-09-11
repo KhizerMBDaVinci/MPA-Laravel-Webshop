@@ -1,21 +1,22 @@
-@extends('layout')
+@extends('layouts.app')
 
-@section('products')
-
+@section('content')
 <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
 
-    <h2>De Bruyne & Adriaansen Markt</h2>
-        <p>Dit is de online webshop waar vandaan je alle lekkere eten kunt bestellen</p>
-        
-    @foreach($products as $product)
-    <a href="/details?id={{ $product->ID }}">
-        <div class="product-container">
-            <img src=" img/{{ $product->ID }}.jpg"></img>
-            <p>{{ $product->Naam }}</p>
+                <div id="ingelogt" class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    U bent ingelogt
+                </div>
+            </div>
         </div>
-    </a>
-    @endforeach
-
+    </div>
 </div>
-
 @endsection

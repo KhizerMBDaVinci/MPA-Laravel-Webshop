@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('details')
 <form id="amount" method="get" action="{{ route('shoppingcart.add', $product[0]->ID) }}">

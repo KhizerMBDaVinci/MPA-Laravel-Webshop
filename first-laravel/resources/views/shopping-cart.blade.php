@@ -1,11 +1,11 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('shopping-cart')
 
 @php $cart = Session::get('cart'); @endphp
 
 @if(Session::has('cart'))
-
+<link type="text/css" href="{{ asset('Myapp.scss') }}" rel="stylesheet">
     <div id="cart-container-container">
         @if($cart->GiveQuantity() > 0)
                 @foreach($products as $product)
@@ -46,7 +46,7 @@
 
         @if($cart->GiveQuantity() < 1)
         
-            <h2>Uw Shopping Cart is leeg.</h2>
+            <h2 class="empty-cart-title">Uw Shopping Cart is leeg.</h2>
                 <div id="cart-total-container">
                     <p id="cart-ttl-name">Totaalbedrag:</p>
                     <p id="cart-ttl-price">€0</p>
@@ -57,7 +57,7 @@
     
     @else
     
-    <h2>Uw Shopping Cart is leeg.</h2>
+    <h2 class="empty-cart-title">Uw Shopping Cart is leeg.</h2>
                 <div id="cart-total-container">
                     <p id="cart-ttl-name">Totaalbedrag:</p>
                     <p id="cart-ttl-price">€0</p>

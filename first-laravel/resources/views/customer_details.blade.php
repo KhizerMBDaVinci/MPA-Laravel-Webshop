@@ -1,10 +1,10 @@
-@extends('layout')
+@extends('layouts.app')
 
 @php $cart = Session::get('cart'); $test = 'test' @endphp
 
 @section('customer-form')
 
-<a id="backbtn" href="/shopping-cart"><button>Terug</button></a>
+<a id="backbtn" href="{{ route('shopping-cart') }}"><button>Terug</button></a>
 <form method="post" action="{{ route('processingorder.validate') }}">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div id="customer-details-div">
@@ -12,7 +12,7 @@
         <p>Vul even uw gegevens in</p>
         <div>
             <label>Naam</label>
-            <input name="name">
+            <input name="name" value="{{ $name ?? '' }}">
         </div>
 
         <div>
@@ -37,7 +37,7 @@
 
         <div>
             <label>E-mailadres</label>
-            <input name="email">
+            <input name="email" value="{{ $email ?? '' }}">
         </div>
 
         <div>
