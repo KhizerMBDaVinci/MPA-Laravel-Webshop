@@ -13,31 +13,34 @@ use Session;
 class OrderController extends Controller
 {
 
+    private $categories;
+    public function __construct()
+    {
+        $this->categories = categorieModel::all();
+    }
+
     public function CustomerForm()
     {
         if(Auth::check())
         {
             $user = Auth::user();
-            $categories = categorieModel::all();
             $name = $user->name;
             $email = $user->email;
 
-            return view('customer_details', ['categories' => $categories, 'name' => $name, 'email' => $email]);
+            return view('customer_details', ['categories' => $this->categories, 'name' => $name, 'email' => $email]);
         }
         
         if(!Auth::check())
         {
             $categories = categorieModel::all();
 
-            return view('customer_details', ['categories' => $categories]);
+            return view('customer_details', ['categories' => $this->categories]);
         }
 
     }
 
     public function ValidateOrder()
     {
-
-        $categories = categorieModel::all();
 
         $errormsg = "U moet alle velden invullen";
 
@@ -51,19 +54,19 @@ class OrderController extends Controller
 
         if($Name == '' || $Achternaam == '' || $Woonplaats == '' || $Street == '' || $Postcode == '' || $Email == '' || $Phone == '')
         {
-            return view('customer_details', ['categories' => $categories, 'Message' => $errormsg]);
+            return view('customer_details', ['categories' => $this->categories, 'Message' => $errormsg]);
         }
 
         else
         {
-           $this->StoreOrder();
+            $this->StoreOrder();
+            
+            $cart = Session::get('cart');
+            $cart->SetProducts(null);
+            $cart->SetPrice(0);
+            $cart->SetQuantity(0);
 
-           $cart = Session::get('cart');
-           $cart->SetProducts(null);
-           $cart->SetPrice(0);
-           $cart->SetQuantity(0);
-
-           return redirect()->route('complete-order');
+            return redirect()->route('complete-order');
         }
     }
 

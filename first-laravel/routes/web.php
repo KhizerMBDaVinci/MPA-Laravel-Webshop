@@ -14,8 +14,6 @@ use App\categorieModel;
 |
 */
 
-// Route::get('/login', 'HomeController@Login')->name('login');
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'MyhomeController@HomeData')->name('myhome');

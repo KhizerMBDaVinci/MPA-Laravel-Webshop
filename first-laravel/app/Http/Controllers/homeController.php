@@ -11,6 +11,8 @@ use App\klantenModel;
 
 class HomeController extends Controller
 {
+    private $categories;
+    private $user;
     /**
      * Create a new controller instance.
      *
@@ -19,6 +21,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->categories = categorieModel::all();
     }
 
     /**
@@ -29,18 +32,16 @@ class HomeController extends Controller
     
     public function index()
     {
-        $categories = categorieModel::all();
-        return view('home', ['categories' => $categories]);
+        return view('home', ['categories' => $this->categories]);
     }
 
     public function ShowOrders()
     {
         $user = Auth::user();
 
-        $categories = categorieModel::all();
         $orders = ordersModel::where('username', $user->name)->get();
 
-        return view('view-orders', ['categories' => $categories, 'orders' => $orders]);
+        return view('view-orders', ['categories' => $this->categories, 'orders' => $orders]);
     }
 
     public function DeleteOrder()
@@ -58,9 +59,8 @@ class HomeController extends Controller
         $klant->delete();
         
         $user = Auth::user();
-        $categories= categorieModel::all();
         $orders = ordersModel::where('username', $user->name)->get();
 
-        return redirect()->route('view-orders', ['categories' => $categories, 'orders' => $orders]);
+        return redirect()->route('view-orders', ['categories' => $this->categories, 'orders' => $orders]);
     }
 }
