@@ -34,6 +34,16 @@ class shoppingCartController extends Controller
             $qty = 1;
         }
 
+        if($qty == "Toevoegen")
+        {
+            $qty = 1;
+        }
+
+        if($qty == "ToevoegenC")
+        {
+            $qty = 1;
+        }
+
         $product = productModel::where('ID', $id)->get();
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
 
@@ -41,7 +51,28 @@ class shoppingCartController extends Controller
         $cart->Add($product, $id, $qty);
         
         $request->session()->put('cart', $cart); 
-        return redirect()->route('shopping-cart');
+        
+        if(request('amount') == "1")
+        {
+            return redirect()->route('shopping-cart');
+        }
+
+        else if(request('amount') == "Toevoegen")
+        {
+            return redirect()->route('myhome');
+        }
+
+        else if(request('amount') == "+")
+        {
+            return redirect()->route('shopping-cart');
+        }
+
+        else if(request('amount') == "ToevoegenC")
+        {
+            $category = categorieModel::where('ID', $product[0]->Categorie_ID)->get();
+            return redirect()->route('category', ['id' => $category[0]->ID]);
+        }
+        
     }
 
     public function Remove(Request $request, $id)

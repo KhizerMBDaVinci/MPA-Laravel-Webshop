@@ -20,7 +20,7 @@
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Gebruikersnaam niet beschikbaar</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -34,7 +34,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Dit E-mailadres is al in gebruik</strong>
                                     </span>
                                 @enderror
                             </div>

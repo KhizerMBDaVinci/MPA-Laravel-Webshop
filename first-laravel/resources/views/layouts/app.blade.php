@@ -1,3 +1,13 @@
+@php
+
+if (Session::has('cart'))
+{
+    $cart = Session::get('cart');
+}
+
+@endphp
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -23,7 +33,7 @@
 </head>
 <body>
     
-    <div id="app">
+    <div class="app" id="app">
         <nav id="laravel-navbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -37,8 +47,11 @@
            
 
                 <a href="/shopping-cart"><img id="shopping-cart-btn" src="img/shopping-cart.jpg"></a>
-
-
+                @if( Session::has('cart') )
+                    @if($cart->GiveQuantity() > 0)
+                        <p id="cartcount">{{ $cart->GiveQuantity() ?? '' }} </p>
+                    @endif
+                @endif
                     <!-- Right Side Of Navbar -->
                     <ul id="login-register-btn" class="navbar-nav mr-auto">
                         <!-- Authentication Links -->

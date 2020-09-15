@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@php $cart = Session::get('cart'); $test = 'test' @endphp
+@php $cart = Session::get('cart') @endphp
 
 @section('customer-form')
 
@@ -12,7 +12,7 @@
         <p>Vul even uw gegevens in</p>
         <div>
             <label>Naam</label>
-            <input name="name" value="{{ $name ?? '' }}">
+            <input name="name">
         </div>
 
         <div>

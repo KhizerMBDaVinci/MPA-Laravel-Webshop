@@ -11,7 +11,6 @@ class productByCatController extends Controller
     public function ProductsData()
     {
         $id = request('id');
-
         $categories = categorieModel::all();
         $presentCategory = categorieModel::where('ID', $id)->get();
         $products = productModel::where('Categorie_ID', $id)->get();

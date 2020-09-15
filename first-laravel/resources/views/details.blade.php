@@ -13,7 +13,7 @@
         
 
         <p id="shopping-cart-text">Toevoegen aan winkelwagen</p>
-        <input value="+" type="submit" id="shopping-cart">
+        <input value="+" type="submit" class="shopping-cart">
 
         <p id="amountext">Aantal</p>
 
