@@ -51,10 +51,10 @@ class shoppingCartController extends Controller
         $cart->Add($product, $id, $qty);
         
         $request->session()->put('cart', $cart); 
-        
+
         if(request('amount') == "1")
         {
-            return redirect()->route('shopping-cart');
+            return redirect()->routedd(request('amount'));('shopping-cart');
         }
 
         else if(request('amount') == "Toevoegen")
@@ -68,6 +68,12 @@ class shoppingCartController extends Controller
         }
 
         else if(request('amount') == "ToevoegenC")
+        {
+            $category = categorieModel::where('ID', $product[0]->Categorie_ID)->get();
+            return redirect()->route('category', ['id' => $category[0]->ID]);
+        }
+
+        else
         {
             $category = categorieModel::where('ID', $product[0]->Categorie_ID)->get();
             return redirect()->route('category', ['id' => $category[0]->ID]);
