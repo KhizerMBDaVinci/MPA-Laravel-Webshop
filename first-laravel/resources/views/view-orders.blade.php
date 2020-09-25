@@ -22,8 +22,4 @@
 
 </div>
 
-<div id="order-details-modal"> 
-
-</div>
-
 @endsection

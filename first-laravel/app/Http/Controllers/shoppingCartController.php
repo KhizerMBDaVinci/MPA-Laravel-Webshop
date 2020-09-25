@@ -54,7 +54,7 @@ class shoppingCartController extends Controller
 
         if(request('amount') == "1")
         {
-            return redirect()->routedd(request('amount'));('shopping-cart');
+            return redirect()->route('shopping-cart');
         }
 
         else if(request('amount') == "Toevoegen")
