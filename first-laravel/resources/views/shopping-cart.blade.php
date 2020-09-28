@@ -19,15 +19,21 @@
                     <p class="cart-prod-price2">€{{ $product['Price'] / $product['Quantity'] }} per stuk</p>
                     @endif
                     <form id="min-qty" method="get" action="{{ route('shoppingcart.remove', $product['ID']) }}">
-                        <input id="min" type="submit" name="amount" value="-"></input>
+                        <input id="min" type="submit" name="text" value="-"></input>
+                        <input type="hidden" name="amount" value="1"></input>
+                        <input type="hidden" value="toCart" name="type">
                     </form>
 
                     <form id="add-qty" method="get" action="{{ route('shoppingcart.add', $product['ID']) }}">
                         <input id="add" type="submit" name="amount" value="+"></input>
+                        <input type="hidden" name="amount" value="1"></input>
+                        <input type="hidden" value="toCart" name="type">
                     </form>
 
                     <form id="remove-prod" method="get" action="{{ route('shoppingcart.remove', $product['ID']) }}">
-                        <input id="remove" type="submit" name="amount" value="X"></input>
+                        <input id="remove" type="submit" name="text" value="X"></input>
+                        <input type="hidden" name="amount" value="0"></input>
+                        <input type="hidden" value="toCart" name="type">
                     </form>
 
                 </div>

@@ -14,8 +14,9 @@
             <img src=" img/{{ $product->ID }}.jpg"></img>
             <p>{{ $product->Naam }}</p>
             <form class="homeadd" method="get" action="{{ route('shoppingcart.add', $product->ID) }}">
-                <input value="+" type="submit" id="shopping-cart">
-                <input type="hidden" value="ToevoegenC" id="amount" name="amount" type="number" min="1">
+                <input value="+" type="submit" id="shopping-cart"></input>
+                <input type="hidden" value="1" name="amount">
+                <input type="hidden" value="ToevoegenC" name="type">
             </form>
         </div>
     </a>

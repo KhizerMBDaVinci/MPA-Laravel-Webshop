@@ -18,6 +18,7 @@
         <p id="amountext">Aantal</p>
 
         <input id="amount" value="1" name="amount" type="number" min="1">
+                <input type="hidden" value="toCart" name="type">
     
     </div>
 </form>

@@ -11,10 +11,12 @@ class ShoppingCart
     private $price = 0;
 
 
-    public function __construct($oldCart)
+    public function __construct()
     {
-        if($oldCart)
+
+        if(Session::has('cart'))
         {
+            $oldCart = Session::get('cart');
             $this->products = $oldCart->products;
             $this->quantity = $oldCart->quantity;
             $this->price = $oldCart->price;
@@ -40,6 +42,8 @@ class ShoppingCart
         $this->products[$id] = $storedProduct;
         $this->quantity+=$qty;
         $this->price += $product[0]->Prijs * $qty;
+
+        Session::put('cart', $this);
     }
 
     public function Remove($product, $id, $qty)
@@ -70,6 +74,7 @@ class ShoppingCart
             unset($this->products[$id]);
         }
         
+        Session::put('cart', $this);
     }
 
     public function GiveProducts()
