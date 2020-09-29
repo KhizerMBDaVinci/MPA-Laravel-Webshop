@@ -7,20 +7,19 @@ use App\categorieModel;
 use App\ShoppingCart;
 use App\productModel;
 
-use Session;
-
 class shoppingCartController extends Controller
 {
 
     public function showCart()
     {
         $categories = categorieModel::all();
-        if (!Session::has('cart'))
+        $cart = new ShoppingCart();
+        if ($cart->empty())
         {
             return view('shopping-cart', ['categories' => $categories, 'products' => null]);
         }
 
-        $cart = new ShoppingCart();
+        
         return view('shopping-cart', ['categories' => $categories, 'products' => $cart->GiveProducts(), 'totalPrice' => $cart->GivePrice(), 'totalQuantity' => $cart->GiveQuantity()]);
     }
 

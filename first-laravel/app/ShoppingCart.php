@@ -77,6 +77,11 @@ class ShoppingCart
         Session::put('cart', $this);
     }
 
+    public function empty()
+    {
+        return !Session::has('cart');
+    }
+
     public function GiveProducts()
     {
         return $this->products;
