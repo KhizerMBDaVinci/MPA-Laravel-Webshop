@@ -10,10 +10,10 @@ class productByCatController extends Controller
 {
     public function ProductsData()
     {
-        $id = request('id');
+        $CategoryId = request('id');
         $categories = categorieModel::all();
-        $presentCategory = categorieModel::where('ID', $id)->get();
-        $products = productModel::where('Categorie_ID', $id)->get();
+        $presentCategory = categorieModel::where('ID', $CategoryId)->get();
+        $products = categorieModel::find($CategoryId)->Products;
 
         return view('products', ['categories' => $categories,'category' => $presentCategory, 'products' => $products]);
     } 
