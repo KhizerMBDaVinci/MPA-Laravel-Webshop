@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ordersModel extends Model
+class Customer extends Model
 {
-    protected $table = 'orders';
+    protected $table = 'klanten';
     public $incrementing = true;
 }

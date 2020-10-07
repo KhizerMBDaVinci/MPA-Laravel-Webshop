@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\categorieModel;
-use App\klantenModel;
-use App\ordersModel;
-use App\order_detailsModel;
+use App\Category;
+use App\Customer;
+use App\Order;
+use App\OrderDetails;
 use Session;
 
 class OrderController extends Controller
@@ -16,10 +16,10 @@ class OrderController extends Controller
     private $categories;
     public function __construct()
     {
-        $this->categories = categorieModel::all();
+        $this->categories = Category::all();
     }
 
-    public function CustomerForm()
+    public function customerForm()
     {
         if(Auth::check())
         {
@@ -32,14 +32,12 @@ class OrderController extends Controller
         
         if(!Auth::check())
         {
-            $categories = categorieModel::all();
-
             return view('customer_details', ['categories' => $this->categories]);
         }
 
     }
 
-    public function ValidateOrder()
+    public function validateOrder()
     {
 
         $errormsg = "U moet alle velden invullen";
@@ -59,25 +57,25 @@ class OrderController extends Controller
 
         else
         {
-            $this->StoreOrder();
+            $this->storeOrder();
             
             $cart = Session::get('cart');
-            $cart->SetProducts(null);
-            $cart->SetPrice(0);
-            $cart->SetQuantity(0);
+            $cart->setProducts(null);
+            $cart->setPrice(0);
+            $cart->setQuantity(0);
 
             return redirect()->route('complete-order');
         }
     }
 
-    public function StoreOrder()
+    public function storeOrder()
     {
         $user = Auth::user();
 
         $cart = Session::get('cart');
         
-        $klant = new klantenModel();
-        $order = new ordersModel();
+        $klant = new Customer();
+        $order = new Order();
 
         $Name = $_POST['name'];
         $Achternaam = $_POST['last-name'];
@@ -99,7 +97,7 @@ class OrderController extends Controller
         if(Auth::check() == false)
         {
             $order->Klant_ID = $klant->getKey();
-            $order->Totaal_Bedrag = $cart->GivePrice();
+            $order->Totaal_Bedrag = $cart->getPrice();
             $order->username = ' ';
             $order->save();  
         }
@@ -107,14 +105,14 @@ class OrderController extends Controller
         if(Auth::check() == true)
         {
             $order->Klant_ID = $klant->getKey();
-            $order->Totaal_Bedrag = $cart->GivePrice();
+            $order->Totaal_Bedrag = $cart->getPrice();
             $order->username = $user->name;
             $order->save();  
         }
 
-        foreach($cart->GiveProducts() as $product)
+        foreach($cart->getProducts() as $product)
         {
-            $order_details = new order_detailsModel();
+            $order_details = new OrderDetails();
             $order_details->Order_ID = $order->getKey();
             $order_details->Product_ID = $product['ID'];
             $order_details->Prijs = $product['Price'];

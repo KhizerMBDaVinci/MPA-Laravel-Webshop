@@ -23,7 +23,7 @@ class ShoppingCart
         }
     }
 
-    public function Add($product, $id, $qty)
+    public function add($product, $id, $qty)
     {
 
         $storedProduct = ['ID' => $product[0]->ID, 'Name' => $product[0]->Naam, 'Quantity' => 0, 'Price' => 0];
@@ -46,34 +46,47 @@ class ShoppingCart
         Session::put('cart', $this);
     }
 
-    public function Remove($product, $id, $qty)
+    public function checkQty($product, $id, $qty)
     {
         if($qty == 1)
         {
-            if($this->products[$id]['Quantity'] > 1)
-            {
-                $this->products[$id]['Quantity'] -= $qty;
-                $this->products[$id]['Price'] -= $product[0]->Prijs;
-        
-                $this->quantity -= $qty;
-                $this->price -= $product[0]->Prijs * $qty;
-            }
-
-            else
-            {
-                $this->quantity -= $qty;
-                $this->price -= $this->products[$id]['Price'];
-                unset($this->products[$id]);
-            }
+            $this->removeOne($product, $id, $qty);
         }
 
         if($qty == 0)
         {
-            $this->quantity -= $this->products[$id]['Quantity'];
-            $this->price -= $product[0]->Prijs * $this->products[$id]['Quantity'];
+            $this->removeProductGroup($product, $id, $qty);
+        }
+    }
+
+    public function removeOne($product, $id, $qty)
+    {
+        
+        if($this->products[$id]['Quantity'] > 1)
+        {
+            $this->products[$id]['Quantity'] -= $qty;
+            $this->products[$id]['Price'] -= $product[0]->Prijs;
+    
+            $this->quantity -= $qty;
+            $this->price -= $product[0]->Prijs * $qty;
+        }
+
+        else
+        {
+            $this->quantity -= $qty;
+            $this->price -= $this->products[$id]['Price'];
             unset($this->products[$id]);
         }
-        
+
+        Session::put('cart', $this);
+    }
+
+    public function removeProductGroup($product, $id, $qty)
+    {
+        $this->quantity -= $this->products[$id]['Quantity'];
+        $this->price -= $product[0]->Prijs * $this->products[$id]['Quantity'];
+        unset($this->products[$id]);
+
         Session::put('cart', $this);
     }
 
@@ -82,32 +95,32 @@ class ShoppingCart
         return !Session::has('cart');
     }
 
-    public function GiveProducts()
+    public function getProducts()
     {
         return $this->products;
     }
 
-    public function GivePrice()
+    public function getPrice()
     {
         return $this->price;
     }
 
-    public function GiveQuantity()
+    public function getQuantity()
     {
         return $this->quantity;
     }
 
-    public function SetProducts($newProducts)
+    public function setProducts($newProducts)
     {
         $this->products = $newProducts;
     }
 
-    public function SetPrice($newPrice)
+    public function setPrice($newPrice)
     {
         $this->price = $newPrice;
     }
 
-    public function SetQuantity($newQty)
+    public function setQuantity($newQty)
     {
         $this->quantity = $newQty;
     }

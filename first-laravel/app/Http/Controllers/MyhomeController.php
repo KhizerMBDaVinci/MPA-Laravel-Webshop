@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\categorieModel;
-use App\productModel;
+use App\Category;
+use App\Product;
 
 class MyhomeController extends Controller
 {
-    public function HomeData()
+    public function homeData()
     {
-        $categories = categorieModel::all();
-        $products = productModel::all();
+        $categories = Category::all();
+        $products = Product::all();
 
         return view('Myhome', ['categories' => $categories,'products' => $products]);
     } 

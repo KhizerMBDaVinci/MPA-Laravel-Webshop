@@ -7,7 +7,7 @@
 @if(Session::has('cart'))
 <link type="text/css" href="{{ asset('Myapp.scss') }}" rel="stylesheet">
     <div id="cart-container-container">
-        @if($cart->GiveQuantity() > 0)
+        @if($cart->getQuantity() > 0)
                 @foreach($products as $product)
                 <div class="cart-prod-container">
 
@@ -50,7 +50,7 @@
         @endif
     </div>
 
-        @if($cart->GiveQuantity() < 1)
+        @if($cart->getQuantity() < 1)
         
             <h2 class="empty-cart-title">Uw Shopping Cart is leeg.</h2>
                 <div id="cart-total-container">

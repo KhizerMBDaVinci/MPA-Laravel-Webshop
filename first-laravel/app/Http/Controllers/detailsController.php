@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\categorieModel;
-use App\productModel;
+use App\Category;
+use App\Product;
 
 class detailsController extends Controller
 {
-    public function ProductData()
+    public function productData()
     {
         $id = request('id');
 
-        $categories = categorieModel::all();
-        $product = productModel::where('ID', $id)->get();
+        $categories = Category::all();
+        $product = Product::where('ID', $id)->get();
 
         return view('details', ['product' => $product, 'categories' => $categories]);
     }

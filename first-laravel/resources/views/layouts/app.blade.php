@@ -48,8 +48,8 @@ if (Session::has('cart'))
 
                 <a href="/shopping-cart"><img id="shopping-cart-btn" src="img/shopping-cart.jpg"></a>
                 @if( Session::has('cart') )
-                    @if($cart->GiveQuantity() > 0)
-                        <p id="cartcount">{{ $cart->GiveQuantity() ?? '' }} </p>
+                    @if($cart->getQuantity() > 0)
+                        <p id="cartcount">{{ $cart->getQuantity() ?? '' }} </p>
                     @endif
                 @endif
                     <!-- Right Side Of Navbar -->
