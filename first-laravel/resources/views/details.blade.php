@@ -9,7 +9,7 @@
         <p id="prod-beschrijving">{{ $product[0]->Beschrijving }}</p>
         <p id="prod-prijs">€{{ $product[0]->Prijs }}</p>
             
-        <img id="prod-afbeelding" src="img/{{ $product[0]->ID }}.jpg">
+        <img id="prod-afbeelding" src="img/{{ $product[0]->Image_Nr }}.jpg">
         
 
         <p id="shopping-cart-text">Toevoegen aan winkelwagen</p>

@@ -31,7 +31,7 @@ class shoppingCartController extends Controller
         $product = Product::where('ID', $id)->get();
 
         $cart = new ShoppingCart();
-        $cart->add($product, $id, $qty);
+        $cart->add($product, $id, $qty, $product[0]->Image_Nr);
 
         if(request('type') == "toCart")
         {

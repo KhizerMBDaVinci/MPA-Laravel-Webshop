@@ -11,7 +11,7 @@
                 @foreach($products as $product)
                 <div class="cart-prod-container">
 
-                    <img src="img/{{ $product['ID'] }}.jpg">
+                    <img src="img/{{ $product['Image_Nr'] }}.jpg">
                     <p class="cart-prod-name">{{ $product['Name'] }}</p>
                     <p class="cart-prod-qty">{{ $product['Quantity'] }}</p>
                     <p class="cart-prod-price">€{{ $product['Price'] }}</p>

@@ -13,7 +13,7 @@ class ShoppingCart
 
     public function __construct()
     {
-
+    
         if(Session::has('cart'))
         {
             $oldCart = Session::get('cart');
@@ -23,10 +23,10 @@ class ShoppingCart
         }
     }
 
-    public function add($product, $id, $qty)
+    public function add($product, $id, $qty, $imgNr)
     {
 
-        $storedProduct = ['ID' => $product[0]->ID, 'Name' => $product[0]->Naam, 'Quantity' => 0, 'Price' => 0];
+        $storedProduct = ['ID' => $product[0]->ID, 'Name' => $product[0]->Naam, 'Quantity' => 0, 'Price' => 0, 'Image_Nr' => $imgNr];
 
         if($this->products)
         {
