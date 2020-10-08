@@ -44,15 +44,14 @@ class HomeController extends Controller
         return view('view-orders', ['categories' => $this->categories, 'orders' => $orders]);
     }
 
-    public function deleteOrder()
+    public function deleteOrder($id)
     {
-        $id = request('id');
 
         $orderDetails = OrderDetails::where('Order_ID', $id);
         $order = Order::where('ID', $id);
 
         $orderklant = Order::find($id);
-        $klant = Customer::where('ID', $orderklant->Klant_ID);
+        $klant = Customer::find($orderklant->Klant_ID);
 
         $orderDetails->delete();
         $order->delete();

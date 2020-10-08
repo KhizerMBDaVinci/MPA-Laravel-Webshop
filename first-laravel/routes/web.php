@@ -18,9 +18,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'MyhomeController@homeData')->name('myhome');
 
-Route::get("/category", 'productByCatController@productsData')->name('category');
+Route::get("/category/{id}", 'productByCatController@productsData')->name('category');
 
-Route::get("/details", 'detailsController@productData')->name('details');
+Route::get("/details/{id}", 'detailsController@details')->name('details');
 
 Route::get("/shopping-cart", 'shoppingCartController@showCart')->name('shopping-cart');
 
@@ -34,13 +34,13 @@ Route::post("/processing-order", 'OrderController@validateOrder')->name('process
 
 Route::get('/view-orders', 'HomeController@showOrders')->middleware('auth')->name('view-orders');
 
-Route::get('/delete-order', 'HomeController@deleteOrder')->middleware('auth')->name('delete-order');
+Route::get('/delete-order/{id}', 'HomeController@deleteOrder')->middleware('auth')->name('delete-order');
 
 
-Route::get("/complete-order", function() 
+Route::get("/complete-order/{loggedIn}", function($logggedIn) 
 {
     $categories = Category::all();
-    return view('CompleteOrder', ['categories' => $categories]);
+    return view('CompleteOrder', ['categories' => $categories, 'loggedIn' => $logggedIn]);
     
 })->name('complete-order');
 

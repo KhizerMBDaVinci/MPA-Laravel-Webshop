@@ -21,6 +21,7 @@ class OrderController extends Controller
 
     public function customerForm()
     {
+
         if(Auth::check())
         {
             $user = Auth::user();
@@ -37,18 +38,17 @@ class OrderController extends Controller
 
     }
 
-    public function validateOrder()
+    public function validateOrder(Request $request)
     {
-
         $errormsg = "U moet alle velden invullen";
 
-        $Name = $_POST['name'];
-        $Achternaam = $_POST['last-name'];
-        $Woonplaats = $_POST['residence'];
-        $Street = $_POST['street'];
-        $Postcode = $_POST['postcode'];
-        $Email = $_POST['email'];
-        $Phone = $_POST['phone'];
+        $Name = $request->name;
+        $Achternaam = $request->last_name;
+        $Woonplaats = $request->residence;
+        $Street = $request->street;
+        $Postcode = $request->postcode;
+        $Email = $request->email;
+        $Phone = $request->phone;
 
         if($Name == '' || $Achternaam == '' || $Woonplaats == '' || $Street == '' || $Postcode == '' || $Email == '' || $Phone == '')
         {
@@ -57,18 +57,27 @@ class OrderController extends Controller
 
         else
         {
-            $this->storeOrder();
+            $loggedIn = $this->storeOrder($request);
+
+            if($loggedIn == true)
+            {
+                $loggedIn = "ingelogt";
+            }
+
+            if($loggedIn == false)
+            {
+                $loggedIn = "niet_ingelogt";
+            }
             
             $cart = Session::get('cart');
             $cart->setProducts(null);
             $cart->setPrice(0);
             $cart->setQuantity(0);
-
-            return redirect()->route('complete-order');
+            return redirect()->route('complete-order', ['loggedIn' => $loggedIn]);
         }
     }
 
-    public function storeOrder()
+    public function storeOrder(Request $request)
     {
         $user = Auth::user();
 
@@ -77,13 +86,13 @@ class OrderController extends Controller
         $klant = new Customer();
         $order = new Order();
 
-        $Name = $_POST['name'];
-        $Achternaam = $_POST['last-name'];
-        $Woonplaats = $_POST['residence'];
-        $Street = $_POST['street'];
-        $Postcode = $_POST['postcode'];
-        $Email = $_POST['email'];
-        $Phone = $_POST['phone'];
+        $Name = $request->name;
+        $Achternaam = $request->last_name;
+        $Woonplaats = $request->residence;
+        $Street = $request->street;
+        $Postcode = $request->postcode;
+        $Email = $request->email;
+        $Phone = $request->phone;
         
         $klant->Naam = $Name;
         $klant->Achternaam = $Achternaam;
@@ -119,5 +128,7 @@ class OrderController extends Controller
             $order_details->Aantal = $product['Quantity'];
             $order_details->save();
         }
+
+        return Auth::check();
     }
 }

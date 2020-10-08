@@ -20,8 +20,9 @@ class CreateKlantenTable extends Migration
             $table->string('Woonplaats');
             $table->string('Straat');
             $table->string('Postcode');
-            $table->string('E-mailadres');
+            $table->string('Emailadres');
             $table->string('Telefoonnummer');
+            $table->timestamps();
         });
     }
 

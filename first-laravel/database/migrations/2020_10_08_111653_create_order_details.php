@@ -17,7 +17,7 @@ class CreateOrderDetails extends Migration
             $table->unsignedBigInteger('Order_ID');
             $table->unsignedBigInteger('Product_ID');
             $table->decimal('Prijs');
-            $table->decimal('amount');
+            $table->decimal('Aantal');
         });
 
         Schema::table('order_details', function (Blueprint $table) {

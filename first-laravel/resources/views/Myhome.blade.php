@@ -6,11 +6,10 @@
 
     <h2>De Bruyne & Adriaansen Markt</h2>
         <p>Dit is de online webshop waar je alle lekkere eten en drinken kunt bestellen</p>
-        
     @foreach($products as $product)
-    <a href="{{ route('details') }}?id={{ $product->ID }}">
+    <a href="{{ route('details', $product->ID) }}">
         <div class="product-container">
-            <img src=" img/{{ $product->Image_Nr }}.jpg"></img>
+            <img src="{{ asset('img/'.$product->Image_Nr) }}.jpg"></img>
             <p>{{ $product->Naam }}</p>
             <form class="homeadd" method="get" action="{{ route('shoppingcart.add', $product->ID) }}">
                 <input value="+" type="submit" id="shopping-cart"></input>

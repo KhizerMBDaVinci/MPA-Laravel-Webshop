@@ -17,8 +17,9 @@ class CreateProductenTable extends Migration
             $table->bigIncrements('ID');
             $table->string('Naam');
             $table->text('Beschrijving');
-            $table->string('Prijs');
+            $table->decimal('Prijs');
             $table->unsignedBigInteger('Categorie_ID');
+            $table->string('Image_Nr');
         });
 
         Schema::table('producten', function (Blueprint $table) {
@@ -26,7 +27,6 @@ class CreateProductenTable extends Migration
                 ->references('ID')
                 ->on('categorieen');
         });
-
     }
 
     /**

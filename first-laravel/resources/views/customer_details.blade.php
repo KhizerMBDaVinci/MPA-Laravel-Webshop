@@ -17,7 +17,7 @@
 
         <div>
             <label>Achternaam</label>
-            <input name="last-name">
+            <input name="last_name">
         </div>
 
         <div>

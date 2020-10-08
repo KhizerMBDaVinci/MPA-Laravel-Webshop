@@ -7,12 +7,11 @@ use App\Category;
 
 class productByCatController extends Controller
 {
-    public function productsData()
+    public function productsData($id)
     {
-        $CategoryId = request('id');
         $categories = Category::all();
-        $presentCategory = Category::where('ID', $CategoryId)->get();
-        $products = Category::find($CategoryId)->products;
+        $presentCategory = Category::find($id);
+        $products = Category::find($id)->products;
 
         return view('products', ['categories' => $categories,'category' => $presentCategory, 'products' => $products]);
     } 

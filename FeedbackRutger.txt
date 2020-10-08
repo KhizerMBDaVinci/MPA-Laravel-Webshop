@@ -1,0 +1,13 @@
+klaar/where() method vervangen door find() bij controllers.
+
+klaar/ProductData() function in detailscontroller details().
+
+?nvt?/Minder getters en setters gebruiken en meer encapsulation gebruiken.
+
+Na het bestellen knopje naar de bestellingen van gebruiker gaan
+
+klaar/Bij de bestellingen overzicht ook de order id laten zien
+
+klaar/Bij de ordercontroller $request gebruiken ipv $_POST
+
+nvt/Er moet een tabel komen tussen de producten en categorieen die de relaties aflegt

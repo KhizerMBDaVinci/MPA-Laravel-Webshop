@@ -45,8 +45,6 @@ if (Session::has('cart'))
 
                     @include('navigation-menu')
            
-
-                <a href="/shopping-cart"><img id="shopping-cart-btn" src="img/shopping-cart.jpg"></a>
                 @if( Session::has('cart') )
                     @if($cart->getQuantity() > 0)
                         <p id="cartcount">{{ $cart->getQuantity() ?? '' }} </p>

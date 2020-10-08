@@ -26,7 +26,7 @@ class ShoppingCart
     public function add($product, $id, $qty, $imgNr)
     {
 
-        $storedProduct = ['ID' => $product[0]->ID, 'Name' => $product[0]->Naam, 'Quantity' => 0, 'Price' => 0, 'Image_Nr' => $imgNr];
+        $storedProduct = ['ID' => $product->ID, 'Name' => $product->Naam, 'Quantity' => 0, 'Price' => 0, 'Image_Nr' => $imgNr];
 
         if($this->products)
         {
@@ -37,11 +37,11 @@ class ShoppingCart
         }
 
         $storedProduct['Quantity'] += $qty;
-        $storedProduct['Price'] = $product[0]->Prijs * $storedProduct['Quantity'];
+        $storedProduct['Price'] = $product->Prijs * $storedProduct['Quantity'];
 
         $this->products[$id] = $storedProduct;
         $this->quantity+=$qty;
-        $this->price += $product[0]->Prijs * $qty;
+        $this->price += $product->Prijs * $qty;
 
         Session::put('cart', $this);
     }
@@ -65,10 +65,10 @@ class ShoppingCart
         if($this->products[$id]['Quantity'] > 1)
         {
             $this->products[$id]['Quantity'] -= $qty;
-            $this->products[$id]['Price'] -= $product[0]->Prijs;
+            $this->products[$id]['Price'] -= $product->Prijs;
     
             $this->quantity -= $qty;
-            $this->price -= $product[0]->Prijs * $qty;
+            $this->price -= $product->Prijs * $qty;
         }
 
         else
@@ -84,7 +84,7 @@ class ShoppingCart
     public function removeProductGroup($product, $id, $qty)
     {
         $this->quantity -= $this->products[$id]['Quantity'];
-        $this->price -= $product[0]->Prijs * $this->products[$id]['Quantity'];
+        $this->price -= $product->Prijs * $this->products[$id]['Quantity'];
         unset($this->products[$id]);
 
         Session::put('cart', $this);

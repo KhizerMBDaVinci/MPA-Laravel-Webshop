@@ -575,7 +575,7 @@ footer
 #orders-container
 {
     margin: 10vh auto;
-    width: 90%;
+    width: 95%;
     background-color: yellow;
     padding: 10px;
     text-align: center;
@@ -592,6 +592,7 @@ footer
     font-size: 5vh;
     color: blue;
     margin: 0 auto;
+    width: 90%;
 }
 
 #orders-container a
@@ -633,4 +634,26 @@ footer
     border: solid;
     border-width: 3px;
     border-color: black;
+}
+
+#goToOrders
+{
+    margin: 20vh 35%;
+    text-align: center;
+    background-color: yellow;
+    padding: 10px;
+    font-size: 2vh;
+}
+
+#goToOrders:hover
+{
+    background-color: blue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#gotoLink
+{
+    text-decoration: none;
+    color: black;
 }

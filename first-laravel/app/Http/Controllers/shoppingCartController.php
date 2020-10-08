@@ -28,10 +28,10 @@ class shoppingCartController extends Controller
 
         $qty = request('amount');
 
-        $product = Product::where('ID', $id)->get();
+        $product = Product::find($id);
 
         $cart = new ShoppingCart();
-        $cart->add($product, $id, $qty, $product[0]->Image_Nr);
+        $cart->add($product, $id, $qty, $product->Image_Nr);
 
         if(request('type') == "toCart")
         {
@@ -45,8 +45,8 @@ class shoppingCartController extends Controller
 
         else if(request('type') == "ToevoegenC")
         {
-            $category = Category::where('ID', $product[0]->Categorie_ID)->get();
-            return redirect()->route('category', ['id' => $category[0]->ID]);
+            $category = Category::find($product->Categorie_ID);
+            return redirect()->route('category', ['id' => $category->ID]);
         }
         
     }
@@ -55,7 +55,7 @@ class shoppingCartController extends Controller
     {
         $qty = request('amount');
 
-        $product = Product::where('ID', $id)->get();
+        $product = Product::find($id);
 
         $cart = new ShoppingCart();
         $cart->checkQty($product, $id, $qty);

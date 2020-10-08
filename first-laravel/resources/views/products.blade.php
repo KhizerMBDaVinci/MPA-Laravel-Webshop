@@ -6,12 +6,12 @@
 
     <h2>De Bruyne & Adriaansen Markt</h2>
 
-        <p>{{ $category[0]->Beschrijving}}</p>
+        <p>{{ $category->Beschrijving}}</p>
         
     @foreach($products as $product)
-    <a href="{{ route('details') }}?id={{ $product->ID }}">
+    <a href="{{ route('details', $product->ID) }}">
         <div class="product-container">
-            <img src=" img/{{ $product->Image_Nr }}.jpg"></img>
+            <img src="{{ asset('img/'.$product->Image_Nr) }}.jpg"></img>
             <p>{{ $product->Naam }}</p>
             <form class="homeadd" method="get" action="{{ route('shoppingcart.add', $product->ID) }}">
                 <input value="+" type="submit" id="shopping-cart"></input>

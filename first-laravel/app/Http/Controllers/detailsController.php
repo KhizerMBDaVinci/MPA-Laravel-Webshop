@@ -8,12 +8,10 @@ use App\Product;
 
 class detailsController extends Controller
 {
-    public function productData()
+    public function details($id)
     {
-        $id = request('id');
-
         $categories = Category::all();
-        $product = Product::where('ID', $id)->get();
+        $product = Product::find($id);
 
         return view('details', ['product' => $product, 'categories' => $categories]);
     }
