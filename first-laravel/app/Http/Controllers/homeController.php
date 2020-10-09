@@ -18,6 +18,10 @@ class HomeController extends Controller
      *
      * @return void
      */
+
+    /**
+    *   - Constructor loads in all categories in advance.
+    */
     public function __construct()
     {
         $this->middleware('auth');
@@ -34,7 +38,11 @@ class HomeController extends Controller
     {
         return view('home', ['categories' => $this->categories]);
     }
-
+    
+    /**
+    *   - Function showOrders() retrieves all orders on the basis of the username of the
+    *     user currently logged in.
+    */
     public function showOrders()
     {
         $user = Auth::user();
@@ -44,14 +52,15 @@ class HomeController extends Controller
         return view('view-orders', ['categories' => $this->categories, 'orders' => $orders]);
     }
 
+    /**
+    *   - Function deleteOrder() deletes the order chosen by the user.
+    */
     public function deleteOrder($id)
     {
-
-        $orderDetails = OrderDetails::where('Order_ID', $id);
         $order = Order::where('ID', $id);
-
+        $orderDetails = OrderDetails::where('Order_ID', $id);
         $orderklant = Order::find($id);
-        $klant = Customer::find($orderklant->Klant_ID);
+        $klant = Customer::where('ID', $orderklant->Klant_ID);
 
         $orderDetails->delete();
         $order->delete();

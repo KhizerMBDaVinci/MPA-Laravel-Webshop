@@ -8,6 +8,9 @@ use App\Product;
 
 class detailsController extends Controller
 {
+    /**
+    *   - Function details() retrieves all the details of a product.
+    */
     public function details($id)
     {
         $categories = Category::all();

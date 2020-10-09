@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    /**
+    *   - Table stated manually.
+    */
     protected $table = 'producten';
 }

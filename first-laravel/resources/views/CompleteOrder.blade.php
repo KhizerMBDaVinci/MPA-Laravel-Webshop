@@ -5,7 +5,7 @@
     <p id="completext">Uw bestelling is verzonden</p>
 
     @if($loggedIn == 'ingelogt')
-        <p id="goToOrders"><a id="gotoLink" href="{{ route('view-orders') }}">Naar bestellingoverzicht</a></p>
+       <a id="gotoLink" href="{{ route('view-orders') }}"> <p id="goToOrders">Naar bestellingoverzicht</p></a>
     @endif
 
 @endsection

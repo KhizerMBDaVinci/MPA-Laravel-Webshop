@@ -14,21 +14,29 @@ class OrderController extends Controller
 {
 
     private $categories;
+
+    /**
+    *   - Constructor loads in all categories in advance.
+    */
     public function __construct()
     {
         $this->categories = Category::all();
     }
 
-    public function customerForm()
+
+    /**
+    *   - Function loggedInCheck() checks if a user is logged in, in order to autofill 
+    *     the E-mail address.
+    */
+    public function loggedInCheck()
     {
 
         if(Auth::check())
         {
             $user = Auth::user();
-            $name = $user->name;
             $email = $user->email;
 
-            return view('customer_details', ['categories' => $this->categories, 'name' => $name, 'email' => $email]);
+            return view('customer_details', ['categories' => $this->categories, 'email' => $email]);
         }
         
         if(!Auth::check())
@@ -38,9 +46,11 @@ class OrderController extends Controller
 
     }
 
+    /**
+    *   - Function validateOrder() checks if not a field is left empty.
+    */
     public function validateOrder(Request $request)
     {
-        $errormsg = "U moet alle velden invullen";
 
         $Name = $request->name;
         $Achternaam = $request->last_name;
@@ -50,33 +60,59 @@ class OrderController extends Controller
         $Email = $request->email;
         $Phone = $request->phone;
 
+        /**
+        *   - Returns boolean value as validation.
+        */
         if($Name == '' || $Achternaam == '' || $Woonplaats == '' || $Street == '' || $Postcode == '' || $Email == '' || $Phone == '')
         {
-            return view('customer_details', ['categories' => $this->categories, 'Message' => $errormsg]);
+            return false;
         }
 
         else
         {
-            $loggedIn = $this->storeOrder($request);
-
-            if($loggedIn == true)
-            {
-                $loggedIn = "ingelogt";
-            }
-
-            if($loggedIn == false)
-            {
-                $loggedIn = "niet_ingelogt";
-            }
-            
-            $cart = Session::get('cart');
-            $cart->setProducts(null);
-            $cart->setPrice(0);
-            $cart->setQuantity(0);
-            return redirect()->route('complete-order', ['loggedIn' => $loggedIn]);
+            return true;
         }
     }
 
+    /**
+    *   - Function processOrder() validates and stores the order.
+    */
+    public function processOrder(Request $request)
+    {
+
+        /**
+        *   - Calls function validateOrder() before storing the order.
+        */
+        $validated = $this->validateOrder($request);
+        if(!$validated)
+        {
+            $errormsg = "U moet alle velden invullen";
+            return view('customer_details', ['categories' => $this->categories, 'Message' => $errormsg]);
+        }
+
+        /**
+        *   - Calls function storeOrder() after the form is validated.
+        */
+        $loggedIn = $this->storeOrder($request);
+
+        if($loggedIn == true)
+        {
+            $loggedIn = "ingelogt";
+        }
+
+        if($loggedIn == false)
+        {
+            $loggedIn = "niet_ingelogt";
+        }
+        
+        $this->emptyCart();
+        return redirect()->route('complete-order', ['loggedIn' => $loggedIn]);
+    }
+
+
+    /**
+    *   - Function storeOrder() stores the order and the associated information in the database.
+    */
     public function storeOrder(Request $request)
     {
         $user = Auth::user();
@@ -130,5 +166,17 @@ class OrderController extends Controller
         }
 
         return Auth::check();
+    }
+
+    /**
+    *   - Function emptyCart() sets the cart members to default values.
+    */
+    public function emptyCart()
+    {
+        $cart = Session::get('cart');
+    
+        $cart->setProducts(null);
+        $cart->setPrice(0);
+        $cart->setQuantity(0);
     }
 }

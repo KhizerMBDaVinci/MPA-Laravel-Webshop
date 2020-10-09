@@ -8,6 +8,9 @@ use App\Product;
 
 class MyhomeController extends Controller
 {
+    /**
+    *   - Function homeData() retrieves all the products and displays them to the homepage. 
+    */
     public function homeData()
     {
         $categories = Category::all();

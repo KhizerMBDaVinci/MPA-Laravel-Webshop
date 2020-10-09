@@ -28,9 +28,9 @@ Route::get("/add-to-cart/{id}", 'shoppingCartController@add')->name('shoppingcar
 
 Route::get("/remove-from-cart/{id}", 'shoppingCartController@remove')->name('shoppingcart.remove');
 
-Route::get("/customer-details", 'OrderController@customerForm')->name('ordercontroller.customerform');
+Route::get("/customer-details", 'OrderController@loggedInCheck')->name('ordercontroller.customerform');
 
-Route::post("/processing-order", 'OrderController@validateOrder')->name('processingorder.validate');
+Route::post("/processing-order", 'OrderController@processOrder')->name('processOrder');
 
 Route::get('/view-orders', 'HomeController@showOrders')->middleware('auth')->name('view-orders');
 
