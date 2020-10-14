@@ -36,12 +36,12 @@ class OrderController extends Controller
             $user = Auth::user();
             $email = $user->email;
 
-            return view('customer_details', ['categories' => $this->categories, 'email' => $email]);
+            return view('customer-details', ['categories' => $this->categories, 'email' => $email]);
         }
         
         if(!Auth::check())
         {
-            return view('customer_details', ['categories' => $this->categories]);
+            return view('customer-details', ['categories' => $this->categories]);
         }
 
     }
@@ -56,7 +56,7 @@ class OrderController extends Controller
         $lastName = $request->last_name;
         $residence = $request->residence;
         $street = $request->street;
-        $postalCode = $request->postcode;
+        $postalCode = $request->postal_code;
         $email = $request->email;
         $phoneNr = $request->phone_nr;
 
@@ -87,7 +87,7 @@ class OrderController extends Controller
         if(!$validated)
         {
             $errormsg = "U moet alle velden invullen";
-            return view('customer_details', ['categories' => $this->categories, 'Message' => $errormsg]);
+            return view('customer-details', ['categories' => $this->categories, 'message' => $errormsg]);
         }
 
         /**
@@ -126,7 +126,7 @@ class OrderController extends Controller
         $lastName = $request->last_name;
         $residence = $request->residence;
         $street = $request->street;
-        $postalCode = $request->postcode;
+        $postalCode = $request->postal_code;
         $email = $request->email;
         $phoneNr = $request->phone_nr;
         
@@ -159,9 +159,9 @@ class OrderController extends Controller
         {
             $order_details = new OrderDetails();
             $order_details->order_id = $order->getKey();
-            $order_details->product_id = $product['ID'];
-            $order_details->price = $product['Price'];
-            $order_details->amount = $product['Quantity'];
+            $order_details->product_id = $product['id'];
+            $order_details->price = $product['price'];
+            $order_details->amount = $product['quantity'];
             $order_details->save();
         }
 

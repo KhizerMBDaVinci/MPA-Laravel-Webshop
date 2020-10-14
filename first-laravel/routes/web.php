@@ -40,7 +40,7 @@ Route::get('/delete-order/{id}', 'HomeController@deleteOrder')->middleware('auth
 Route::get("/complete-order/{loggedIn}", function($logggedIn) 
 {
     $categories = Category::all();
-    return view('completeOrder', ['categories' => $categories, 'loggedIn' => $logggedIn]);
+    return view('complete-order', ['categories' => $categories, 'loggedIn' => $logggedIn]);
     
 })->name('complete-order');
 
