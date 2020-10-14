@@ -8,7 +8,7 @@
 <form method="post" action="{{ route('processOrder') }}">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div id="customer-details-div">
-        <p id="errmsg">{{ $Message ?? '' }}</p>
+        <p id="errmsg">{{ $message ?? '' }}</p>
         <p>Vul even uw gegevens in</p>
         <div>
             <label>Naam</label>
