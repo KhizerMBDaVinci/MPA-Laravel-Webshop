@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('details')
-<form id="amount" method="get" action="{{ route('shoppingcart.add', $product->ID) }}">
+<form id="amount" method="get" action="{{ route('shoppingcart.add', $product->id) }}">
     <div id="detail-container">
 
-        <h2 id="prod-naam">{{ $product->Naam }}</h2>
+        <h2 id="prod-naam">{{ $product->name }}</h2>
 
-        <p id="prod-beschrijving">{{ $product->Beschrijving }}</p>
-        <p id="prod-prijs">€{{ $product->Prijs }}</p>
+        <p id="prod-beschrijving">{{ $product->description }}</p>
+        <p id="prod-prijs">€{{ $product->price }}</p>
 
-        <img id="prod-afbeelding" src="{{ asset('img/'.$product->Image_Nr) }}.jpg">
+        <img id="prod-afbeelding" src="{{ asset('img/'.$product->image_nr) }}.jpg">
         
 
         <p id="shopping-cart-text">Toevoegen aan winkelwagen</p>

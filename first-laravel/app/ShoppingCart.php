@@ -35,7 +35,7 @@ class ShoppingCart
         /**
         *   - The product temporarily stored in an associative array $storedProduct[].
         */
-        $storedProduct = ['ID' => $product->ID, 'Name' => $product->Naam, 'Quantity' => 0, 'Price' => 0, 'Image_Nr' => $imgNr];
+        $storedProduct = ['id' => $product->id, 'name' => $product->name, 'quantity' => 0, 'price' => 0, 'imageNr' => $imgNr];
 
         /**
         *   - Checks if the index already exists that consists out the product ID.
@@ -54,8 +54,8 @@ class ShoppingCart
         /**
         *   - Updating the price and quantity of $storedProduct[].
         */
-        $storedProduct['Quantity'] += $qty;
-        $storedProduct['Price'] = $product->Prijs * $storedProduct['Quantity'];
+        $storedProduct['quantity'] += $qty;
+        $storedProduct['price'] = $product->price * $storedProduct['quantity'];
 
         /**
         *   - Overwriting the index in $this->products[] with the $storedProduct[].
@@ -63,7 +63,7 @@ class ShoppingCart
         */
         $this->products[$id] = $storedProduct;
         $this->quantity+=$qty;
-        $this->price += $product->Prijs * $qty;
+        $this->price += $product->price * $qty;
 
         Session::put('cart', $this);
     }
@@ -100,13 +100,13 @@ class ShoppingCart
         *     quantity is higher that 1.
         *   - Updates the $this->quantity and $this->price.
         */
-        if($this->products[$id]['Quantity'] > 1)
+        if($this->products[$id]['quantity'] > 1)
         {
-            $this->products[$id]['Quantity'] -= $qty;
-            $this->products[$id]['Price'] -= $product->Prijs;
+            $this->products[$id]['quantity'] -= $qty;
+            $this->products[$id]['price'] -= $product->price;
     
             $this->quantity -= $qty;
-            $this->price -= $product->Prijs * $qty;
+            $this->price -= $product->price * $qty;
         }
 
         /**
@@ -116,7 +116,7 @@ class ShoppingCart
         else
         {
             $this->quantity -= $qty;
-            $this->price -= $this->products[$id]['Price'];
+            $this->price -= $this->products[$id]['price'];
             unset($this->products[$id]);
         }
 
@@ -132,8 +132,8 @@ class ShoppingCart
         *   - Updates the $this->quantity and $this->price and deletes the index containing
         *     the product.
         */
-        $this->quantity -= $this->products[$id]['Quantity'];
-        $this->price -= $product->Prijs * $this->products[$id]['Quantity'];
+        $this->quantity -= $this->products[$id]['quantity'];
+        $this->price -= $product->price * $this->products[$id]['quantity'];
         unset($this->products[$id]);
 
         Session::put('cart', $this);

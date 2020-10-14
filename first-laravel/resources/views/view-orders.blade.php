@@ -17,7 +17,7 @@
         <tr class="ordertje">
             <td class="trecords">{{ $order->ID }}</td>
             <td class="trecords">{{ $date }}</td>
-            <td class="trecords">€{{ $order->Totaal_Bedrag }} <a href="{{ route('delete-order', $order->ID) }}"><button class="kruisje">X</button></a></td>
+            <td class="trecords">€{{ $order->Totaal_Bedrag }} <a href="{{ route('delete-order', $order->id) }}"><button class="kruisje">X</button></a></td>
         </tr>
         @endforeach
     </table>

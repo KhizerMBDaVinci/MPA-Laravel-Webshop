@@ -52,18 +52,18 @@ class OrderController extends Controller
     public function validateOrder(Request $request)
     {
 
-        $Name = $request->name;
-        $Achternaam = $request->last_name;
-        $Woonplaats = $request->residence;
-        $Street = $request->street;
-        $Postcode = $request->postcode;
-        $Email = $request->email;
-        $Phone = $request->phone;
+        $name = $request->name;
+        $lastName = $request->last_name;
+        $residence = $request->residence;
+        $street = $request->street;
+        $postalCode = $request->postcode;
+        $email = $request->email;
+        $phoneNr = $request->phone_nr;
 
         /**
         *   - Returns boolean value as validation.
         */
-        if($Name == '' || $Achternaam == '' || $Woonplaats == '' || $Street == '' || $Postcode == '' || $Email == '' || $Phone == '')
+        if($name == '' || $lastName == '' || $residence == '' || $street == '' || $postalCode == '' || $email == '' || $phoneNr == '')
         {
             return false;
         }
@@ -119,38 +119,38 @@ class OrderController extends Controller
 
         $cart = Session::get('cart');
         
-        $klant = new Customer();
+        $customer = new Customer();
         $order = new Order();
 
-        $Name = $request->name;
-        $Achternaam = $request->last_name;
-        $Woonplaats = $request->residence;
-        $Street = $request->street;
-        $Postcode = $request->postcode;
-        $Email = $request->email;
-        $Phone = $request->phone;
+        $name = $request->name;
+        $lastName = $request->last_name;
+        $residence = $request->residence;
+        $street = $request->street;
+        $postalCode = $request->postcode;
+        $email = $request->email;
+        $phoneNr = $request->phone_nr;
         
-        $klant->Naam = $Name;
-        $klant->Achternaam = $Achternaam;
-        $klant->Woonplaats = $Woonplaats;
-        $klant->Straat = $Street;
-        $klant->Postcode = $Postcode;
-        $klant->Emailadres = $Email;
-        $klant->Telefoonnummer = $Phone;
-        $klant->save();
+        $customer->name = $name;
+        $customer->last_name = $lastName;
+        $customer->residence = $residence;
+        $customer->street = $street;
+        $customer->postal_code = $postalCode;
+        $customer->email = $email;
+        $customer->phone_nr = $phoneNr;
+        $customer->save();
 
         if(Auth::check() == false)
         {
-            $order->Klant_ID = $klant->getKey();
-            $order->Totaal_Bedrag = $cart->getPrice();
+            $order->customer_id = $klant->getKey();
+            $order->total_amount = $cart->getPrice();
             $order->username = ' ';
             $order->save();  
         }
 
         if(Auth::check() == true)
         {
-            $order->Klant_ID = $klant->getKey();
-            $order->Totaal_Bedrag = $cart->getPrice();
+            $order->customer_id = $customer->getKey();
+            $order->total_amount = $cart->getPrice();
             $order->username = $user->name;
             $order->save();  
         }
@@ -158,10 +158,10 @@ class OrderController extends Controller
         foreach($cart->getProducts() as $product)
         {
             $order_details = new OrderDetails();
-            $order_details->Order_ID = $order->getKey();
-            $order_details->Product_ID = $product['ID'];
-            $order_details->Prijs = $product['Price'];
-            $order_details->Aantal = $product['Quantity'];
+            $order_details->order_id = $order->getKey();
+            $order_details->product_id = $product['ID'];
+            $order_details->price = $product['Price'];
+            $order_details->amount = $product['Quantity'];
             $order_details->save();
         }
 

@@ -11,26 +11,26 @@
                 @foreach($products as $product)
                 <div class="cart-prod-container">
 
-                    <img src="{{ asset('img/'.$product['Image_Nr']) }}.jpg">
-                    <p class="cart-prod-name">{{ $product['Name'] }}</p>
-                    <p class="cart-prod-qty">{{ $product['Quantity'] }}</p>
-                    <p class="cart-prod-price">€{{ $product['Price'] }}</p>
-                    @if($product['Quantity'] > 0)
-                    <p class="cart-prod-price2">€{{ $product['Price'] / $product['Quantity'] }} per stuk</p>
+                    <img src="{{ asset('img/'.$product['imageNr']) }}.jpg">
+                    <p class="cart-prod-name">{{ $product['name'] }}</p>
+                    <p class="cart-prod-qty">{{ $product['quantity'] }}</p>
+                    <p class="cart-prod-price">€{{ $product['price'] }}</p>
+                    @if($product['quantity'] > 0)
+                    <p class="cart-prod-price2">€{{ $product['price'] / $product['quantity'] }} per stuk</p>
                     @endif
-                    <form id="min-qty" method="get" action="{{ route('shoppingcart.remove', $product['ID']) }}">
+                    <form id="min-qty" method="get" action="{{ route('shoppingcart.remove', $product['id']) }}">
                         <input id="min" type="submit" name="text" value="-"></input>
                         <input type="hidden" name="amount" value="1"></input>
                         <input type="hidden" value="toCart" name="type">
                     </form>
 
-                    <form id="add-qty" method="get" action="{{ route('shoppingcart.add', $product['ID']) }}">
+                    <form id="add-qty" method="get" action="{{ route('shoppingcart.add', $product['id']) }}">
                         <input id="add" type="submit" name="amount" value="+"></input>
                         <input type="hidden" name="amount" value="1"></input>
                         <input type="hidden" value="toCart" name="type">
                     </form>
 
-                    <form id="remove-prod" method="get" action="{{ route('shoppingcart.remove', $product['ID']) }}">
+                    <form id="remove-prod" method="get" action="{{ route('shoppingcart.remove', $product['id']) }}">
                         <input id="remove" type="submit" name="text" value="X"></input>
                         <input type="hidden" name="amount" value="0"></input>
                         <input type="hidden" value="toCart" name="type">

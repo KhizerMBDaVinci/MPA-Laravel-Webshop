@@ -16,17 +16,17 @@ use App\Category;
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'MyhomeController@homeData')->name('myhome');
+Route::get('/', 'MyHomeController@homeData')->name('myhome');
 
-Route::get("/category/{id}", 'productByCatController@productsData')->name('category');
+Route::get("/category/{id}", 'ProductByCatController@productsData')->name('category');
 
-Route::get("/details/{id}", 'detailsController@details')->name('details');
+Route::get("/details/{id}", 'DetailsController@details')->name('details');
 
-Route::get("/shopping-cart", 'shoppingCartController@showCart')->name('shopping-cart');
+Route::get("/shopping-cart", 'ShoppingCartController@showCart')->name('shopping-cart');
 
-Route::get("/add-to-cart/{id}", 'shoppingCartController@add')->name('shoppingcart.add');
+Route::get("/add-to-cart/{id}", 'ShoppingCartController@add')->name('shoppingcart.add');
 
-Route::get("/remove-from-cart/{id}", 'shoppingCartController@remove')->name('shoppingcart.remove');
+Route::get("/remove-from-cart/{id}", 'ShoppingCartController@remove')->name('shoppingcart.remove');
 
 Route::get("/customer-details", 'OrderController@loggedInCheck')->name('ordercontroller.customerform');
 
@@ -40,7 +40,7 @@ Route::get('/delete-order/{id}', 'HomeController@deleteOrder')->middleware('auth
 Route::get("/complete-order/{loggedIn}", function($logggedIn) 
 {
     $categories = Category::all();
-    return view('CompleteOrder', ['categories' => $categories, 'loggedIn' => $logggedIn]);
+    return view('completeOrder', ['categories' => $categories, 'loggedIn' => $logggedIn]);
     
 })->name('complete-order');
 

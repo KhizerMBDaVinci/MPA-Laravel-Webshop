@@ -9,5 +9,5 @@ class Product extends Model
     /**
     *   - Table stated manually.
     */
-    protected $table = 'producten';
+    protected $table = 'products';
 }

@@ -2,7 +2,7 @@ klaar/where() method vervangen door find() bij controllers.
 
 klaar/ProductData() function in detailscontroller details().
 
-?nvt?/Minder getters en setters gebruiken en meer encapsulation gebruiken.
+nvt/Minder getters en setters gebruiken en meer encapsulation gebruiken.
 
 klaar/Na het bestellen knopje naar de bestellingen van gebruiker gaan
 

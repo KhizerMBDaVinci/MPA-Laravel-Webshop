@@ -9,7 +9,7 @@ class Category extends Model
     /**
     *   - Table stated manually.
     */
-    protected $table = 'categorieen';
+    protected $table = 'categories';
 
     /**
     *   - Function products() declares a one to many relationship between models
@@ -17,6 +17,6 @@ class Category extends Model
     */
     public function products()
     {
-        return $this->hasMany('App\Product', 'Categorie_ID', 'ID');
+        return $this->hasMany('App\Product', 'category_id', 'id');
     }
 }

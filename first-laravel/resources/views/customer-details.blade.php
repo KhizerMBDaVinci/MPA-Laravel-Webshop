@@ -32,7 +32,7 @@
 
         <div>
             <label>Postcode</label>
-            <input name="postcode">
+            <input name="postal_code">
         </div>
 
         <div>
@@ -42,7 +42,7 @@
 
         <div>
             <label>Telefoonnummer</label>
-            <input name="phone">
+            <input name="phone_nr">
         </div>
 
         <div>

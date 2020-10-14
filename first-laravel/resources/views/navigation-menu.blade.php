@@ -2,8 +2,8 @@
 <div id="navigation-menu">
     <ul>
     <a href="/"><button>Home</button></a>
-    @foreach($categories as $categorie)
-        <a href="{{ route('category', $categorie->ID) }}"><button>{{ $categorie->Naam }}</button></a>
+    @foreach($categories as $category)
+        <a href="{{ route('category', $category->id) }}"><button>{{ $category->name }}</button></a>
     @endforeach
     </ul>
 </div> 

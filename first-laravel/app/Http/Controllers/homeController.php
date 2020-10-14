@@ -59,12 +59,12 @@ class HomeController extends Controller
     {
         $order = Order::where('ID', $id);
         $orderDetails = OrderDetails::where('Order_ID', $id);
-        $orderklant = Order::find($id);
-        $klant = Customer::where('ID', $orderklant->Klant_ID);
+        $orderCustomer = Order::find($id);
+        $customer = Customer::where('ID', $orderCustomer->customer_id);
 
         $orderDetails->delete();
         $order->delete();
-        $klant->delete();
+        $customer->delete();
         
         $user = Auth::user();
         $orders = Order::where('username', $user->name)->get();

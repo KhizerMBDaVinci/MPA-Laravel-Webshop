@@ -40,7 +40,7 @@ class shoppingCartController extends Controller
         $product = Product::find($id);
 
         $cart = new ShoppingCart();
-        $cart->add($product, $id, $qty, $product->Image_Nr);
+        $cart->add($product, $id, $qty, $product->image_nr);
 
         /**
         *   - Redirecting to the corresponding view.
@@ -57,8 +57,8 @@ class shoppingCartController extends Controller
 
         else if(request('type') == "ToevoegenC")
         {
-            $category = Category::find($product->Categorie_ID);
-            return redirect()->route('category', ['id' => $category->ID]);
+            $category = Category::find($product->category_id);
+            return redirect()->route('category', ['id' => $category->id]);
         }
         
     }

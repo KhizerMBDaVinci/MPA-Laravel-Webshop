@@ -10,6 +10,6 @@ class Customer extends Model
     *   - Table stated manually.
     *   - Table ID is set to increment automatically.
     */
-    protected $table = 'klanten';
+    protected $table = 'customer';
     public $incrementing = true;
 }

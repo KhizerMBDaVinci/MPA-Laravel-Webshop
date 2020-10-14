@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderDetails extends Migration
+class CreateOrderDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,20 +14,20 @@ class CreateOrderDetails extends Migration
     public function up()
     {
         Schema::create('order_details', function (Blueprint $table) {
-            $table->unsignedBigInteger('Order_ID');
-            $table->unsignedBigInteger('Product_ID');
-            $table->decimal('Prijs');
-            $table->decimal('Aantal');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
+            $table->decimal('price');
+            $table->decimal('amount');
         });
 
         Schema::table('order_details', function (Blueprint $table) {
-            $table->foreign('Order_ID')
-                ->references('ID')
+            $table->foreign('order_id')
+                ->references('id')
                 ->on('orders');
 
-            $table->foreign('Product_ID')
-                ->references('ID')
-                ->on('producten');
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products');
         });
     }
 

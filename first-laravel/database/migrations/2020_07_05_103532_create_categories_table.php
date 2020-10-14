@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategorieenTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCategorieenTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorieen', function (Blueprint $table) {
-            $table->bigIncrements('ID');
-            $table->string('Naam');
-            $table->text('Beschrijving');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->text('description');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateCategorieenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorieen');
+        Schema::dropIfExists('categories');
     }
 }
