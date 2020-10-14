@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
 
     /**
-    *   - Constructor loads in all categories in advance.
+    * Constructor loads in all categories in advance.
     */
     public function __construct()
     {
@@ -40,8 +40,8 @@ class HomeController extends Controller
     }
     
     /**
-    *   - Function showOrders() retrieves all orders on the basis of the username of the
-    *     user currently logged in.
+    * Function showOrders() retrieves all orders on the basis of the username of the
+    * user currently logged in.
     */
     public function showOrders()
     {
@@ -53,7 +53,7 @@ class HomeController extends Controller
     }
 
     /**
-    *   - Function deleteOrder() deletes the order chosen by the user.
+    * Function deleteOrder() deletes the order chosen by the user.
     */
     public function deleteOrder($id)
     {

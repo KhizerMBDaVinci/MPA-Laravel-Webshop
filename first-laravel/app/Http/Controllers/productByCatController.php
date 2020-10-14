@@ -8,7 +8,7 @@ use App\Category;
 class productByCatController extends Controller
 {
     /**
-    *   - Function productsData() retrieves all the products filtered by category.
+    * Function productsData() retrieves all the products filtered by category.
     */
     public function productsData($id)
     {

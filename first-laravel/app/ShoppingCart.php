@@ -11,8 +11,8 @@ class ShoppingCart
     private $price = 0;
 
     /**
-    *   - Constructor replaces the ShoppingCart with the previous one stored in the session
-    *     each time a new is made.
+    * Constructor replaces the ShoppingCart with the previous one stored in the session
+    * each time a new is made.
     */
     public function __construct()
     {
@@ -27,39 +27,39 @@ class ShoppingCart
     }
 
     /**
-    *   - Function add() stores a product passed from the controller in the shopping cart.
+    * Function add() stores a product passed from the controller in the shopping cart.
     */
     public function add($product, $id, $qty, $imgNr)
     {
 
         /**
-        *   - The product temporarily stored in an associative array $storedProduct[].
+        * The product temporarily stored in an associative array $storedProduct[].
         */
         $storedProduct = ['id' => $product->id, 'name' => $product->name, 'quantity' => 0, 'price' => 0, 'imageNr' => $imgNr];
 
         /**
-        *   - Checks if the index already exists that consists out the product ID.
+        * Checks if the index already exists that consists out the product ID.
         */
         if($this->products)
         {
             if(array_key_exists($id, $this->products))
             {
                 /**
-                *   - Updates the $storedProduct[] with the index of the existing product group matching its own ID.
+                * Updates the $storedProduct[] with the index of the existing product group matching its own ID.
                 */
                 $storedProduct = $this->products[$id];
             }
         }
 
         /**
-        *   - Updating the price and quantity of $storedProduct[].
+        * Updating the price and quantity of $storedProduct[].
         */
         $storedProduct['quantity'] += $qty;
         $storedProduct['price'] = $product->price * $storedProduct['quantity'];
 
         /**
-        *   - Overwriting the index in $this->products[] with the $storedProduct[].
-        *   - Updating $this->price and $this->quantity.
+        * Overwriting the index in $this->products[] with the $storedProduct[].
+        * Updating $this->price and $this->quantity.
         */
         $this->products[$id] = $storedProduct;
         $this->quantity+=$qty;
@@ -69,12 +69,12 @@ class ShoppingCart
     }
 
     /**
-    *   - Function checkQty() checks what value $qty received from the controller.
+    * Function checkQty() checks what value $qty received from the controller.
     */
     public function checkQty($product, $id, $qty)
     {
         /**
-        *   - Decrements the quantity of the product by 1 if $qty is 1.
+        * Decrements the quantity of the product by 1 if $qty is 1.
         */
         if($qty == 1)
         {
@@ -82,7 +82,7 @@ class ShoppingCart
         }
 
         /**
-        *   - Removes the productGroup if $qty is 0.
+        * Removes the productGroup if $qty is 0.
         */
         if($qty == 0)
         {
@@ -91,14 +91,14 @@ class ShoppingCart
     }
 
     /**
-    *   - Function removeOne() removes 1 product from the product group.
+    * Function removeOne() removes 1 product from the product group.
     */
     public function removeOne($product, $id, $qty)
     {
         /**
-        *   - Decrements the quantity and price of the product by its own if the
+        * Decrements the quantity and price of the product by its own if the
         *     quantity is higher that 1.
-        *   - Updates the $this->quantity and $this->price.
+        * Updates the $this->quantity and $this->price.
         */
         if($this->products[$id]['quantity'] > 1)
         {
@@ -110,8 +110,8 @@ class ShoppingCart
         }
 
         /**
-        *   - Updates the $this->quantity and $this->price and deletes the index containing
-        *     the product.
+        * Updates the $this->quantity and $this->price and deletes the index containing
+        * the product.
         */
         else
         {
@@ -124,13 +124,13 @@ class ShoppingCart
     }
 
     /**
-    *   - Function removeProductGroup() removes a product group.
+    * Function removeProductGroup() removes a product group.
     */
     public function removeProductGroup($product, $id, $qty)
     {
         /**
-        *   - Updates the $this->quantity and $this->price and deletes the index containing
-        *     the product.
+        * Updates the $this->quantity and $this->price and deletes the index containing
+        * the product.
         */
         $this->quantity -= $this->products[$id]['quantity'];
         $this->price -= $product->price * $this->products[$id]['quantity'];
@@ -140,8 +140,8 @@ class ShoppingCart
     }
 
     /**
-    *   - Function empty() returns a condition regarding the presence of the
-    *     ShoppingCart in the session.
+    * Function empty() returns a condition regarding the presence of the
+    * ShoppingCart in the session.
     */
     public function empty()
     {
@@ -149,7 +149,7 @@ class ShoppingCart
     }
 
     /**
-    *   - The following functions are the getters and setters of the ShoppingCart class.
+    * The following functions are the getters and setters of the ShoppingCart class.
     */
     public function getProducts()
     {

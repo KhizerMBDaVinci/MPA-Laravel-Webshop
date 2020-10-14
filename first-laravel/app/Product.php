@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     /**
-    *   - Table stated manually.
+    * Table name stated manually.
     */
     protected $table = 'products';
 }

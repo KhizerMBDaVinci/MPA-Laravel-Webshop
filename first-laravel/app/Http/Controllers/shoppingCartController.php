@@ -11,7 +11,7 @@ class shoppingCartController extends Controller
 {
 
     /**
-    *   - Function showCart() returns view displaying the products in the shopping cart.
+    * Function showCart() returns view displaying the products in the shopping cart.
     */
     public function showCart()
     {
@@ -27,7 +27,7 @@ class shoppingCartController extends Controller
     }
 
     /**
-    *   - Function add() passes the product to the ShoppingCart.
+    * Function add() passes the product to the ShoppingCart.
     */
     public function add($id)
     {
@@ -35,7 +35,7 @@ class shoppingCartController extends Controller
         $qty = request('amount');
 
         /**
-        *   - Retrieving the product from the database, and adds to the shopping cart.
+        * Retrieving the product from the database, and adds to the shopping cart.
         */
         $product = Product::find($id);
 
@@ -43,7 +43,7 @@ class shoppingCartController extends Controller
         $cart->add($product, $id, $qty, $product->image_nr);
 
         /**
-        *   - Redirecting to the corresponding view.
+        * Redirecting to the corresponding view.
         */
         if(request('type') == "toCart")
         {
@@ -64,7 +64,7 @@ class shoppingCartController extends Controller
     }
 
     /**
-    *   - Function remove() initiates the removal of a product from the ShoppingCart.
+    * Function remove() initiates the removal of a product from the ShoppingCart.
     */
     public function remove($id)
     {

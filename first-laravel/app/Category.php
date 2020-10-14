@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     /**
-    *   - Table stated manually.
+    * Table name stated manually.
     */
     protected $table = 'categories';
 
     /**
-    *   - Function products() declares a one to many relationship between models
-    *     'Category' and 'Product'.
+    * Function products() declares a one to many relationship between models
+    * 'Category' and 'Product'.
     */
     public function products()
     {

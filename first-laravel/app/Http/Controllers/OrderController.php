@@ -16,7 +16,7 @@ class OrderController extends Controller
     private $categories;
 
     /**
-    *   - Constructor loads in all categories in advance.
+    * Constructor loads in all categories in advance.
     */
     public function __construct()
     {
@@ -25,8 +25,8 @@ class OrderController extends Controller
 
 
     /**
-    *   - Function loggedInCheck() checks if a user is logged in, in order to autofill 
-    *     the E-mail address.
+    * Function loggedInCheck() checks if a user is logged in, in order to autofill 
+    * the E-mail address.
     */
     public function loggedInCheck()
     {
@@ -47,7 +47,7 @@ class OrderController extends Controller
     }
 
     /**
-    *   - Function validateOrder() checks if not a field is left empty.
+    * Function validateOrder() checks if not a field is left empty.
     */
     public function validateOrder(Request $request)
     {
@@ -61,7 +61,7 @@ class OrderController extends Controller
         $phoneNr = $request->phone_nr;
 
         /**
-        *   - Returns boolean value as validation.
+        * Returns boolean value as validation.
         */
         if($name == '' || $lastName == '' || $residence == '' || $street == '' || $postalCode == '' || $email == '' || $phoneNr == '')
         {
@@ -75,13 +75,13 @@ class OrderController extends Controller
     }
 
     /**
-    *   - Function processOrder() validates and stores the order.
+    * Function processOrder() validates and stores the order.
     */
     public function processOrder(Request $request)
     {
 
         /**
-        *   - Calls function validateOrder() before storing the order.
+        * Calls function validateOrder() before storing the order.
         */
         $validated = $this->validateOrder($request);
         if(!$validated)
@@ -91,7 +91,7 @@ class OrderController extends Controller
         }
 
         /**
-        *   - Calls function storeOrder() after the form is validated.
+        * Calls function storeOrder() after the form is validated.
         */
         $loggedIn = $this->storeOrder($request);
 
@@ -111,7 +111,7 @@ class OrderController extends Controller
 
 
     /**
-    *   - Function storeOrder() stores the order and the associated information in the database.
+    * Function storeOrder() stores the order and the associated information in the database.
     */
     public function storeOrder(Request $request)
     {
@@ -169,7 +169,7 @@ class OrderController extends Controller
     }
 
     /**
-    *   - Function emptyCart() sets the cart members to default values.
+    * Function emptyCart() sets the cart members to default values.
     */
     public function emptyCart()
     {

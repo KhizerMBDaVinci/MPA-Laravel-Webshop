@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetails extends Model
 {
     /**
-    *   - Table stated manually.
-    *   - Timestamps will be added automatically to this table.
+    * Table name stated manually.
+    * Timestamps will be added automatically to this table.
     */
     protected $table = 'order_details';
 
